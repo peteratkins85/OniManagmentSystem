@@ -1,4 +1,5 @@
 /web/bundles/
+/web/lib/
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
@@ -12,5 +13,5 @@
 !/src/Cms/.gitkeep
 !/src/.htaccess
 /composer.phar
-/web/lib/
 .idea/
+composer.lock
