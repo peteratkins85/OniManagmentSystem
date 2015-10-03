@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Cms\DashboardManagerBundle\DashboardManagerBundle(),
             new Cms\TemplateManagerBundle\TemplateManagerBundle(),
             new Cms\ProductManagerBundle\ProductManagerBundle(),
+            new Cms\CoreBundle\CoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

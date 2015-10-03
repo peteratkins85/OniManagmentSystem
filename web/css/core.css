@@ -1,117 +1,98 @@
-body{
-    padding-top: 50px;
-}
-    .sidebar {
-        position: fixed;
-        top: 0px;
-        bottom: 0;
-        width: 175px;
-        left: 0;
-        z-index: 1000;
-        display: block;
-        overflow-x: visible;
-        overflow-y: visible; /* Scrollable contents if viewport is shorter than content. */
-        background-color: #101010;
-        //border-right: 1px solid #eee;
-    }
+body {
+  padding-top: 50px; }
 
-        .sidebar .title{
-            background: none;
-            filter: none;
-            text-align: left;
-        }
+.sidebar {
+  position: fixed;
+  top: 0px;
+  bottom: 0;
+  width: 175px;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  overflow-x: visible;
+  overflow-y: visible;
+  background-color: #101010;
+  border-right: 1px solid #eee; }
+  .sidebar .title {
+    background: none;
+    filter: none;
+    text-align: left; }
+  .sidebar .sidebar-nav-btns {
+    position: relative;
+    display: block;
+    padding: 7px 15px;
+    width: 175px;
+    margin-bottom: -1px;
+    font-size: 12px;
+    overflow: visible !important;
+    color: #dddddd;
+    font-size: 12px;
+    text-align: left; }
+    .sidebar .sidebar-nav-btns .popout {
+      z-index: 99999 !important;
+      position: absolute;
+      right: -150px;
+      width: 150px;
+      color: #eee;
+      top: -9999px;
+      margin: 0;
+      padding: 0;
+      text-align: left; }
+    .sidebar .sidebar-nav-btns .glyphicon {
+      padding-right: 4px; }
+    .sidebar .sidebar-nav-btns a {
+      color: #dddddd;
+      text-decoration: none; }
+    .sidebar .sidebar-nav-btns a:hover,
+    .sidebar .sidebar-nav-btns a:focus {
+      text-decoration: none;
+      background-color: #222222;
+      color: white;
+      z-index: 99999 !important;
+      position: absolute;
+      right: -150px;
+      width: 150px;
+      color: #eee;
+      top: -9999px;
+      margin: 0;
+      padding: 0;
+      text-align: left; }
+    .sidebar .sidebar-nav-btns .popout li {
+      z-index: 99999 !important;
+      padding: 7px 15px;
+      list-style: none;
+      width: 200px;
+      background-color: #494343;
+      margin: 0;
+      font-size: 12px;
+      border-bottom: solid thin #ccc; }
+    .sidebar .sidebar-nav-btns .popout li:hover {
+      background-color: black; }
+  .sidebar .sidebar-nav-btns:hover ul {
+    top: 0; }
 
-        .sidebar-nav-btns {
-            position: relative;
-            display: block;
-            padding: 7px 15px;
-            width: 175px;
-            margin-bottom: -1px;
-            font-size: 14px;
-            overflow: visible !important;
-            color: #dddddd;
-            text-align: left;
-        }
-        
-        .sidebar-nav-btns .glyphicon{
-            
-            padding-right: 4px;
-            
-        }
-        
-            .sidebar-nav-btns a {
-                color: #dddddd;
-                text-decoration: none;
-            }
+.user-tab {
+  line-height: 20px;
+  height: 50px;
+  font-size: 13px;
+  color: white; }
+  .user-tab .user-welcome {
+    line-height: 47px;
+    margin-right: 5px; }
+  .user-tab .user-dropdown {
+    display: inline-block; }
+  .user-tab .user-dropdown .user_icon {
+    padding-right: 5px;
+    cursor: pointer; }
 
-            .sidebar-nav-btns a:hover , .sidebar-nav-btns a:focus {
-                text-decoration: none;
-                background-color: #222222;
-                color: white;
-            }
+.cms-container {
+  padding-left: 175px; }
 
-            .sidebar-nav-btns .popout{
-                z-index: 99999 !important;
-                position: absolute;
-                right:-150px;
-                width:150px;
-                color: #eee;
-                top:-9999px;
-                margin: 0;
-                padding: 0;
-                text-align: left;
-            }
+.main-container {
+  padding: 20px; }
 
-            .sidebar-nav-btns:hover ul {
-                top:0;
-            }
+.navbar {
+  left: 175px;
+  background-color: #101010; }
 
-
-                .sidebar-nav-btns .popout li{
-                    z-index: 99999 !important;
-                    padding: 7px 15px;
-                    list-style: none;
-                    width: 200px;
-                    background-color: rgb(73, 67, 67);
-                    margin:0;
-                    font-size: 12px;
-                    border-bottom: solid thin #ccc;
-                }
-                
-                .sidebar-nav-btns .popout li:hover{
-                    background-color: black;
-                }
-                
-    .user-tab{
-        line-height: 20px;
-        
-        height: 50px;
-        font-size: 13px;
-        color: white;
-    }
-
-        .user-tab .user-welcome{
-            line-height: 47px;
-            margin-right: 5px;
-        }
-
-        .user-tab .user-dropdown{
-            display: inline-block;
-        }
-        
-        .user-tab .user-dropdown .user_icon{
-            padding-right: 5px;
-            cursor: pointer;
-        }
-
-    .cms-container{
-        padding-left: 175px;
-    }
-    .main-container{
-        padding: 20px;
-    }
-    
-    .navbar{
-        left:175px;
-        background-color: #101010;
-    }
+/*# sourceMappingURL=core.css.map */

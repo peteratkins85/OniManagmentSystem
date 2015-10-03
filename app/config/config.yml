@@ -61,6 +61,25 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        resolve_target_entities:
+            #ContentMangerBundle Entitiese
+            Cms\Entity\Languages: Cms\ContentManagerBundle\Entity\Languages
+            Cms\Entity\Zones: Cms\ContentManagerBundle\Entity\Zones
+            Cms\Entity\Countries: Cms\ContentManagerBundle\Entity\Countries
+            Cms\Entity\Content: Cms\ContentManagerBundle\Entity\Content
+            #ProductManagerBundle Entities
+            Cms\Entity\ProductDefinitions: Cms\ProductManagerBundle\Entity\ProductDefinitions
+            Cms\Entity\Products: Cms\ProductManagerBundle\Entity\Products
+            Cms\Entity\ProductTypes: Cms\ProductManagerBundle\Entity\ProductTypes
+            Cms\Entity\ProductVariants: Cms\ProductManagerBundle\Entity\ProductVariants
+            Cms\Entity\ProductCategories: Cms\ProductManagerBundle\Entity\ProductCategories
+            Cms\Entity\ProductCategoryDefinitions: Cms\ProductManagerBundle\Entity\ProductCategoryDefinitions
+            Cms\Entity\ProductOptions: Cms\ProductManagerBundle\Entity\ProductOptions
+            Cms\Entity\ProductOptionDefinitions: Cms\ProductManagerBundle\Entity\ProductOptionDefinitions
+            Cms\Entity\ProductOptionGroups: Cms\ProductManagerBundle\Entity\ProductOptionGroups
+            Cms\Entity\ProductOptionGroupDefinitions: Cms\ProductManagerBundle\Entity\ProductOptionGroupDefinitions
+            Cms\Entity\ProductOptionGroupTypes: Cms\ProductManagerBundle\Entity\ProductOptionGroupTypes
+            Cms\Entity\ProductCategoryDefinitions: Cms\ProductManagerBundle\Entity\ProductCategoryDefinitions
 
 # Swiftmailer Configuration
 swiftmailer:
