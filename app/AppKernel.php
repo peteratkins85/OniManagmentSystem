@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new Cms\ContentManagerBundle\ContentManagerBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Cms\DashboardManagerBundle\DashboardManagerBundle(),
-            new Cms\TemplateManagerBundle\TemplateManagerBundle(),
             new Cms\ProductManagerBundle\ProductManagerBundle(),
             new Cms\CoreBundle\CoreBundle(),
         );
