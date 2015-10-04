@@ -22,14 +22,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "ircmaxell/password-compat": "dev-master",
         "friendsofsymfony/user-bundle": "~2.0@dev"
-        //"Cms/DashboardManagerBundle": "dev-master@dev"
     },
-//    "repositories": [
-//        {
-//            "type": "vcs",
-//            "url":  "git@bitbucket.org:shinraken85/dashboardmanagerbundle.git"
-//        }
-//    ],
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
