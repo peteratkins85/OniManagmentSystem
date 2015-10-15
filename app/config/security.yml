@@ -12,11 +12,20 @@ security:
     providers:
         cms_users:
             id: cms_user_provider
+        our_db_provider:
+            entity:
+                class: UserManagerBundle:User
+                property: username
 
     firewalls:
+#        default:
+#            pattern:    ^/
+#            http_basic: ~
+#            provider: our_db_provider
         cms:
             pattern: ^/admin
-            form_login:
+            simple_form:
+                authenticator: login_authenticator
                 provider: cms_users
                 csrf_provider: form.csrf_provider
                 target_path_parameter: /admin/dashboard
@@ -24,12 +33,11 @@ security:
                 check_path: /admin/login_check
                 always_use_default_target_path: true
                 default_target_path: /admin/dashboard
-            logout:       true
+            logout:
+                path:   /admin/logout
+                target: /admin/login
             anonymous:    true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/super_admin/, role: ROLE_ADMIN }
-        - { path: ^/admin*, role: ROLE_ADMIN }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/*, role: ROLE_ADMIN }
