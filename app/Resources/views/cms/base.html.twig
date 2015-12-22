@@ -2,22 +2,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}{% endblock %}</title>
-        <link href="{{ asset('lib/dependencies/bootstrap/dist/css/bootstrap-theme.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('lib/dependencies/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
-        {% block stylesheets %}{% endblock %}
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <meta content='text/html;charset=utf-8' http-equiv='content-type'>
+        <meta content='Flat administration template for Twitter Bootstrap.' name='description'>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {{ include('cms/head.html.twig') }}
     </head>
-    <body>
+    <body class="contrast-dark {% block bodyClass %}{% endblock %}">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{ include('cms/header.html.twig') }}
+    {% endif %}
+    <div id='wrapper'>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {{ include('cms/navigation.html.twig') }}
+        {% endif %}
         {% block body %}
         {% endblock %}
-        {% block javascripts %}
-            {# Bootstrap include #}
-            <script src="lib/dependencies/jquery/jquery.min.js"></script>
-            <script  src="{{ asset('lib/dependencies/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript"></script>
-        {% endblock %}
-        {% block custom_javascript %}
-        {% endblock %}
+    </div>
+        {% block javascripts %}{% endblock %}
+        {{ include('cms/javascript-include.html.twig') }}
     </body>
 </html>

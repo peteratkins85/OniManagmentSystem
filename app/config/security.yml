@@ -3,32 +3,19 @@ security:
         Cms\UserManagerBundle\Entity\User: sha512
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_ADMIN:       [ROLE_USER,ROLE_AUTHOR,ROLE_MODERATOR]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN,ROLE_ALLOWED_TO_SWITCH]
 
-#    providers:
-#        fos_userbundle:
-#            id: fos_user.user_provider.username
     providers:
         cms_users:
             id: cms_user_provider
-        our_db_provider:
-            entity:
-                class: UserManagerBundle:User
-                property: username
 
     firewalls:
-#        default:
-#            pattern:    ^/
-#            http_basic: ~
-#            provider: our_db_provider
         cms:
-            pattern: ^/admin
-            simple_form:
-                authenticator: login_authenticator
+            pattern: ^/admin/
+            provider: cms_users
+            form_login:
                 provider: cms_users
-                csrf_provider: form.csrf_provider
-                target_path_parameter: /admin/dashboard
                 login_path: /admin/login
                 check_path: /admin/login_check
                 always_use_default_target_path: true
@@ -36,8 +23,17 @@ security:
             logout:
                 path:   /admin/logout
                 target: /admin/login
-            anonymous:    true
+            anonymous: ~
 
     access_control:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/*, role: ROLE_ADMIN }
+
+# activate different ways to authenticate
+
+# http_basic: ~
+# http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+# form_login: ~
+# http://symfony.com/doc/current/cookbook/security/form_login_setup.html
