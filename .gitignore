@@ -9,6 +9,12 @@
 /build/
 /vendor/
 /var/
+/var/cache/*
+/var/logs/*
+/var/sessions/*
+!var/cache/.gitkeep
+!var/log/.gitkeep
+!var/sessions/.gitkeep
 /bin/
 /src/Cms/*
 !/src/Cms/.gitkeep

@@ -58,7 +58,7 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
+        #naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         resolve_target_entities:
             #CoreBundle Entities
@@ -80,6 +80,12 @@ doctrine:
             Cms\Entity\ProductOptionGroupDefinitions: Cms\ProductManagerBundle\Entity\ProductOptionGroupDefinitions
             Cms\Entity\ProductOptionGroupTypes: Cms\ProductManagerBundle\Entity\ProductOptionGroupTypes
             Cms\Entity\ProductCategoryDefinitions: Cms\ProductManagerBundle\Entity\ProductCategoryDefinitions
+
+stof_doctrine_extensions:
+    default_locale: en
+    orm:
+        default:
+            timestampable: true
 
 # Swiftmailer Configuration
 swiftmailer:
