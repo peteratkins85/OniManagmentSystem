@@ -80,12 +80,20 @@ doctrine:
             Cms\Entity\ProductOptionGroupDefinitions: Cms\ProductManagerBundle\Entity\ProductOptionGroupDefinitions
             Cms\Entity\ProductOptionGroupTypes: Cms\ProductManagerBundle\Entity\ProductOptionGroupTypes
             Cms\Entity\ProductCategoryDefinitions: Cms\ProductManagerBundle\Entity\ProductCategoryDefinitions
+        mappings:
+          gedmo_tree:
+            type: annotation
+            prefix: Gedmo\Tree\Entity
+            dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+            #alias: GedmoTree # (optional) it will default to the name set for the mapping
+            is_bundle: false
 
 stof_doctrine_extensions:
     default_locale: en
     orm:
         default:
             timestampable: true
+            tree: true
 
 # Swiftmailer Configuration
 swiftmailer:

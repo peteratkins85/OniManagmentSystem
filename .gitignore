@@ -13,7 +13,7 @@
 /var/logs/*
 /var/sessions/*
 !var/cache/.gitkeep
-!var/log/.gitkeep
+!var/logs/.gitkeep
 !var/sessions/.gitkeep
 /bin/
 /src/Cms/*
