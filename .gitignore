@@ -15,6 +15,7 @@
 !var/cache/.gitkeep
 !var/logs/.gitkeep
 !var/sessions/.gitkeep
+!var/SymfonyRequirements.php
 /bin/
 /src/Cms/*
 !/src/Cms/.gitkeep
