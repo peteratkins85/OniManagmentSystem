@@ -72,7 +72,7 @@ doctrine:
             Cms\Entity\Products: Cms\ProductManagerBundle\Entity\Products
             Cms\Entity\ProductTypes: Cms\ProductManagerBundle\Entity\ProductTypes
             Cms\Entity\ProductVariants: Cms\ProductManagerBundle\Entity\ProductVariants
-            Cms\Entity\ProductCategories: Cms\ProductManagerBundle\Entity\ProductCategories
+            Cms\Entity\ProductCategory: Cms\ProductManagerBundle\Entity\ProductCategory
             Cms\Entity\ProductCategoryDefinitions: Cms\ProductManagerBundle\Entity\ProductCategoryDefinitions
             Cms\Entity\ProductOptions: Cms\ProductManagerBundle\Entity\ProductOptions
             Cms\Entity\ProductOptionDefinitions: Cms\ProductManagerBundle\Entity\ProductOptionDefinitions
@@ -81,19 +81,27 @@ doctrine:
             Cms\Entity\ProductOptionGroupTypes: Cms\ProductManagerBundle\Entity\ProductOptionGroupTypes
             Cms\Entity\ProductCategoryDefinitions: Cms\ProductManagerBundle\Entity\ProductCategoryDefinitions
         mappings:
-          gedmo_tree:
-            type: annotation
-            prefix: Gedmo\Tree\Entity
-            dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
-            #alias: GedmoTree # (optional) it will default to the name set for the mapping
-            is_bundle: false
+            gedmo_tree:
+                type: annotation
+                prefix: Gedmo\Tree\Entity
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                #alias: GedmoTree # (optional) it will default to the name set for the mapping
+                is_bundle: false
+            gedmo_translatable:
+                type: annotation
+                prefix: Gedmo\Translatable\Entity
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                #alias: GedmoTranslatable # (optional) it will default to the name set for the mapping
+                is_bundle: false
+
 
 stof_doctrine_extensions:
-    default_locale: en
+    default_locale: en_gb
     orm:
         default:
             timestampable: true
             tree: true
+            translatable: true
 
 # Swiftmailer Configuration
 swiftmailer:

@@ -15,7 +15,7 @@
 {%- endblock textarea_widget %}
 
 {% block button_widget -%}
-    {% set attr = attr|merge({class: (attr.class|default('btn-default') ~ 'btn')|trim}) %}
+    {% set attr = attr|merge({class: (attr.class|default('btn-default') ~ ' btn ')|trim}) %}
     {{- parent() -}}
 {%- endblock %}
 
@@ -178,7 +178,7 @@
 {# Rows #}
 
 {% block form_row -%}
-    <div class="control-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+    <div class="control-group{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}">
         {{- form_label(form) -}}
         {{- form_widget(form) -}}
         {{- form_errors(form) -}}
@@ -229,12 +229,20 @@
 
 {% block form_errors -%}
     {% if errors|length > 0 -%}
-    {% if form.parent %}<span class="help-block">{% else %}<div class="alert alert-danger">{% endif %}
-    <ul class="list-unstyled">
+    {% if form.parent %}
+    <span class="help-inline">
         {%- for error in errors -%}
-            <li><span class="glyphicon glyphicon-exclamation-sign"></span> {{ error.message }}</li>
+             {{ error.message }}
         {%- endfor -%}
-    </ul>
-    {% if form.parent %}</span>{% else %}</div>{% endif %}
+    </span>
+    {% else %}
+    <div class="alert alert-danger">
+        <ul class="list-unstyled">
+            {%- for error in errors -%}
+                <li><span class="glyphicon glyphicon-exclamation-sign"></span> {{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    </div>
+    {% endif %}
     {%- endif %}
 {%- endblock form_errors %}
