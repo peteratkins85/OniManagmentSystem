@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -38,6 +38,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+#    paths:
+#            "%kernel.root_dir%/../themes/travel-connect": travel_connect
 
 # Doctrine Configuration
 doctrine:
@@ -60,26 +62,7 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         #naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-        resolve_target_entities:
-            #CoreBundle Entities
-            Cms\Entity\Languages: Cms\CoreBundle\Entity\Languages
-            Cms\Entity\Countries: Cms\CoreBundle\Entity\Countries
-            Cms\Entity\Zones: Cms\CoreBundle\Entity\Zones
-            #ContentMangerBundle Entitiese
-            Cms\Entity\Content: Cms\ContentManagerBundle\Entity\Content
-            #ProductManagerBundle Entities
-            Cms\Entity\ProductDefinitions: Cms\ProductManagerBundle\Entity\ProductDefinitions
-            Cms\Entity\Products: Cms\ProductManagerBundle\Entity\Products
-            Cms\Entity\ProductTypes: Cms\ProductManagerBundle\Entity\ProductTypes
-            Cms\Entity\ProductVariants: Cms\ProductManagerBundle\Entity\ProductVariants
-            Cms\Entity\ProductCategory: Cms\ProductManagerBundle\Entity\ProductCategory
-            Cms\Entity\ProductCategoryDefinitions: Cms\ProductManagerBundle\Entity\ProductCategoryDefinitions
-            Cms\Entity\ProductOptions: Cms\ProductManagerBundle\Entity\ProductOptions
-            Cms\Entity\ProductOptionDefinitions: Cms\ProductManagerBundle\Entity\ProductOptionDefinitions
-            Cms\Entity\ProductOptionGroups: Cms\ProductManagerBundle\Entity\ProductOptionGroups
-            Cms\Entity\ProductOptionGroupDefinitions: Cms\ProductManagerBundle\Entity\ProductOptionGroupDefinitions
-            Cms\Entity\ProductOptionGroupTypes: Cms\ProductManagerBundle\Entity\ProductOptionGroupTypes
-            Cms\Entity\ProductCategoryDefinitions: Cms\ProductManagerBundle\Entity\ProductCategoryDefinitions
+#        resolve_target_entities:
         mappings:
             gedmo_tree:
                 type: annotation
@@ -94,14 +77,19 @@ doctrine:
                 #alias: GedmoTranslatable # (optional) it will default to the name set for the mapping
                 is_bundle: false
 
-
 stof_doctrine_extensions:
-    default_locale: en_gb
+    default_locale: "%locale%"
     orm:
         default:
             timestampable: true
             tree: true
             translatable: true
+
+travel_connect:
+    providers:
+        wts:
+            password: travel123
+            username: thuraya
 
 # Swiftmailer Configuration
 swiftmailer:

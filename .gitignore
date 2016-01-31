@@ -17,8 +17,9 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /bin/
-/src/Cms/*
-!/src/Cms/.gitkeep
+/src/Oni/*
+!/src/Oni/CoreBundle
+!/src/Oni/.gitkeep
 !/src/.htaccess
 /composer.phar
 .idea/

@@ -150,13 +150,18 @@
       } else {
         sdom = "<'row-fluid datatables-top'<'span6'l><'span6 text-right'f>r>t<'row-fluid datatables-bottom'<'span6'i><'span6 text-right'p>>";
       }
+      var language = $(elem).attr('locale')
       dt = $(elem).dataTable({
         sDom: sdom,
         sPaginationType: "bootstrap",
         "iDisplayLength": $(elem).data("pagination-records") || 10,
-        oLanguage: {
-          sLengthMenu: "_MENU_ records per page"
+        language: {
+            //"url" : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+            "url" : "/oni_assets/data-tables-languages/English.json"
         }
+        //oLanguage: {
+        //  sLengthMenu: "_MENU_ records per page"
+        //}
       });
       if ($(elem).hasClass("data-table-column-filter")) {
         return dt.columnFilter();

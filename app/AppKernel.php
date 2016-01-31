@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Europe/London');
+
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
@@ -16,12 +16,13 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Cms\UserManagerBundle\UserManagerBundle(),
-            new Cms\ContentManagerBundle\ContentManagerBundle(),
-            new Cms\DashboardManagerBundle\DashboardManagerBundle(),
-            new Cms\ProductManagerBundle\ProductManagerBundle(),
-            new Cms\CoreBundle\CoreBundle(),
-
+            new Oni\UserManagerBundle\UserManagerBundle(),
+            new Oni\ContentManagerBundle\ContentManagerBundle(),
+            new Oni\DashboardManagerBundle\DashboardManagerBundle(),
+            new Oni\ProductManagerBundle\ProductManagerBundle(),
+            new Oni\CoreBundle\CoreBundle(),
+            new Oni\TravelConnectBundle\TravelConnectBundle(),
+            new Misd\GuzzleBundle\MisdGuzzleBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
