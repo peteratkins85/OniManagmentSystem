@@ -32,26 +32,27 @@ security:
                 target: /admin/login
             anonymous: ~
         travel_connect:
-            pattern: ^/tc/
+            host: '^tc\.%domain%'
+            pattern: ^/
             provider: travel_connect_users
             form_login:
                 provider: travel_connect_users
-                login_path: /tc/login
-                check_path: /tc/login_check
+                login_path: /login
+                check_path: /login_check
                 always_use_default_target_path: true
-                default_target_path: /tc
+                default_target_path: /
             logout:
-                path:   /tc/logout
-                target: /tc/login
+                path:   /logout
+                target: /login
             anonymous: ~
 
     access_control:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/*, role: ROLE_ADMIN }
-        - { path: ^/tc/login,role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/tc/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/tc/*,role: ROLE_TRAVEL_CONNECT_USER }
+#        - { path: ^/tc/login,role: IS_AUTHENTICATED_ANONYMOUSLY  }
+#        - { path: ^/tc/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/tc/*,role: ROLE_TRAVEL_CONNECT_USER }
 
 # activate different ways to authenticate
 
