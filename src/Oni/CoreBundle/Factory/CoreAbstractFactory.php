@@ -31,11 +31,6 @@ abstract class CoreAbstractFactory implements ContainerAwareInterface
         $this->container = $container;
     }
 
-    public function get(){
-
-
-    }
-
 
     /**
      *
