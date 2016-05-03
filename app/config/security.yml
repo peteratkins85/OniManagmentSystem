@@ -1,13 +1,14 @@
 security:
     encoders:
         Oni\UserManagerBundle\Entity\User: sha512
-        Oni\TravelConnectBundle\Entity\User: sha512
+        Oni\TravelPortBundle\Entity\User: sha512
 
     role_hierarchy:
-        ROLE_B2C:         [ROLE_USER]
-        ROLE_ADMIN:       [ROLE_USER,ROLE_AUTHOR,ROLE_MODERATOR]
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN,ROLE_ALLOWED_TO_SWITCH]
-        ROLE_TRAVEL_CONNECT_ADMIN: [ROLE_TRAVEL_CONNECT_USER, ROLE_TRAVEL_CONNECT_ADMIN]
+        ROLE_USER:                       [ROLE_GUEST]
+        ROLE_ADMIN:                      [ROLE_USER,ROLE_GUEST]
+        ROLE_SUPER_ADMIN:                [ROLE_ADMIN,ROLE_ALLOWED_TO_SWITCH]
+        ROLE_TRAVEL_CONNECT_USER:        [ROLE_TRAVEL_CONNECT_GUEST]
+        ROLE_TRAVEL_CONNECT_ADMIN:       [ROLE_TRAVEL_CONNECT_USER, ROLE_TRAVEL_CONNECT_ADMIN]
         ROLE_TRAVEL_CONNECT_SUPER_ADMIN: [ROLE_TRAVEL_CONNECT_ADMIN,ROLE_ALLOWED_TO_SWITCH]
 
     providers:

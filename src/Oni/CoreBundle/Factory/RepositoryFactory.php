@@ -29,7 +29,7 @@ class RepositoryFactory extends CoreAbstractFactory
         $repository = $this->container->get('doctrine.orm.default_entity_manager')->getRepository($entityName);
 
         //Injects Dependencies
-        $this->injectDependencies($repository);
+        $this->injectRepositoryDependencies($repository);
 
         return $repository;
 

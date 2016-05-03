@@ -24,40 +24,40 @@
 
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{ url('oni_product_list') }}'>
+                        <a href='{{ url('oni_user_list') }}'>
                             <i class='icon-caret-right'></i>
-                            <span>{{ 'core_bundle.employees'|trans }}</span>
+                            <span>{{ 'core_bundle.users'|trans }}</span>
                         </a>
                     </li>
                     <li class=''>
-                        <a href='{{ url('oni_categories_list') }}'>
+                        <a href=''>
                             <i class='icon-caret-right'></i>
                             <span>{{ 'core_bundle.localisation'|trans }}</span>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class=''>
-                <a class="dropdown-collapse" href="#"><i class='icon-glass'></i>
-                    <span>{{ 'product_bundle.product.manager'|trans }}</span>
-                    <i class='icon-angle-down angle-down'></i>
-                </a>
+            {#<li class=''>#}
+                {#<a class="dropdown-collapse" href="#"><i class='icon-glass'></i>#}
+                    {#<span>{{ 'product_bundle.product.manager'|trans }}</span>#}
+                    {#<i class='icon-angle-down angle-down'></i>#}
+                {#</a>#}
 
-                <ul class='nav nav-stacked'>
-                    <li class=''>
-                        <a href='{{ url('oni_product_list') }}'>
-                            <i class='icon-caret-right'></i>
-                            <span>{{ 'product_bundle.products'|trans }}</span>
-                        </a>
-                    </li>
-                    <li class=''>
-                        <a href='{{ url('oni_categories_list') }}'>
-                            <i class='icon-caret-right'></i>
-                            <span>{{ 'product_bundle.product.categories'|trans|title }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                {#<ul class='nav nav-stacked'>#}
+                    {#<li class=''>#}
+                        {#<a href='{{ url('oni_product_list') }}'>#}
+                            {#<i class='icon-caret-right'></i>#}
+                            {#<span>{{ 'product_bundle.products'|trans }}</span>#}
+                        {#</a>#}
+                    {#</li>#}
+                    {#<li class=''>#}
+                        {#<a href='{{ url('oni_categories_list') }}'>#}
+                            {#<i class='icon-caret-right'></i>#}
+                            {#<span>{{ 'product_bundle.product.categories'|trans|title }}</span>#}
+                        {#</a>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</li>#}
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='icon-plane'></i>
                     <span>{{ 'travel-connect-bundle.travel.connect'|trans }}</span>
@@ -68,12 +68,6 @@
                         <a href='{{ url('oni_travel_connect_index') }}'>
                             <i class='icon-caret-right'></i>
                             <span>{{ 'travel_connect_bundle.users'|trans }}</span>
-                        </a>
-                    </li>
-                    <li class=''>
-                        <a href='{{ url('oni_categories_list') }}'>
-                            <i class='icon-caret-right'></i>
-                            <span>{{ 'travel_connect_bundle.accounts'|trans }}</span>
                         </a>
                     </li>
                 </ul>

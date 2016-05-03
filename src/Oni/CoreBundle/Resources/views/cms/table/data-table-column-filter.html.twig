@@ -1,7 +1,7 @@
 <table class='data-table-column-filter table table-bordered table-striped' data='' style='margin-bottom:0;'>
 {%  block header %}
     <thead>
-    {% for title in titles|keys %}
+    {% for title in titles %}
         <th><b>{{ title|trans }}</b></th>
     {% endfor %}
     {% if edit_options is defined %}

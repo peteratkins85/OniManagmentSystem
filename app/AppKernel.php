@@ -19,9 +19,9 @@ class AppKernel extends Kernel
             new Oni\UserManagerBundle\UserManagerBundle(),
             new Oni\ContentManagerBundle\ContentManagerBundle(),
             new Oni\DashboardManagerBundle\DashboardManagerBundle(),
-            new Oni\ProductManagerBundle\ProductManagerBundle(),
+            //new Oni\ProductManagerBundle\ProductManagerBundle(),
             new Oni\CoreBundle\CoreBundle(),
-            new Oni\TravelConnectBundle\TravelConnectBundle(),
+            new Oni\TravelPortBundle\TravelPortBundle(),
             new Misd\GuzzleBundle\MisdGuzzleBundle()
         );
 

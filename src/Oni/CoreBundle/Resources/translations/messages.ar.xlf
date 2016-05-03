@@ -64,7 +64,7 @@
                 <source>product_bundle.invalid.product.category.id</source>
                 <target>Invalid product category Id</target>
             </trans-unit>
-            <!--TravelConnectBundle-->
+            <!--TravelPortBundle-->
             <trans-unit id="16">
                 <source>travel-connect-bundle.travel.connect</source>
                 <target>Travel Connect</target>

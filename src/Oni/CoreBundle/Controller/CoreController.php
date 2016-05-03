@@ -3,6 +3,7 @@
 namespace Oni\CoreBundle\Controller;
 
 use Oni\CoreBundle\Entity\Repository\LanguagesRepository;
+use Oni\CoreBundle\Entity\TranslatorAwareInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Oni\ProductManagerBundle\Entity\Products;
@@ -12,7 +13,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Form\FormInterface;
 
 
-class  CoreController extends Controller
+class CoreController extends Controller implements TranslatorAwareInterface
 {
 
     /** @var Container */
@@ -22,7 +23,7 @@ class  CoreController extends Controller
     protected $translator;
 
     /** @var string */
-    protected $travelConnectTheme = 'default';
+    protected $travelPortTheme = 'default';
 
 
 
@@ -47,9 +48,9 @@ class  CoreController extends Controller
      * @param string $theme
      *
      */
-    public function setTravelConnectTheme($theme){
+    public function setTravelPortTheme($theme){
 
-        $this->travelConnectTheme = $theme;
+        $this->travelPortTheme = $theme;
 
     }
 
@@ -89,18 +90,7 @@ class  CoreController extends Controller
 
     }
 
-    /***
-     *
-     * Set Translator
-     *
-     * @param TranslatorInterface $translator
-     *
-     */
-    public function setTranslator(TranslatorInterface $translator){
 
-        $this->translator = $translator;
-
-    }
 
     /**
      * CATEGORY
@@ -154,6 +144,15 @@ class  CoreController extends Controller
     }
 
 
-
-
+    /**
+     *
+     * Set Translator
+     *
+     * @param \Symfony\Component\Translation\TranslatorInterface $translator
+     *
+     * @return mixed
+     */
+    public function setTranslator( TranslatorInterface $translator ) {
+        $this->translator = $translator;
+    }
 }

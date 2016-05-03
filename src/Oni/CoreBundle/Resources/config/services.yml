@@ -41,6 +41,8 @@ services:
         calls:
             - [ setContainer, ["@service_container"]]
     #Event Listeners
+    oni_event_dispatcher:
+        class: Oni\CoreBundle\EventListeners\OniEventDispatcher
     oni_locale_listener:
         class: "%oni_locale_listener%"
         arguments: ["en","@service_container"]

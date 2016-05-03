@@ -85,7 +85,7 @@ stof_doctrine_extensions:
             tree: true
             translatable: true
 
-travel_connect:
+travel_port:
     providers:
         wts:
             password: travel123

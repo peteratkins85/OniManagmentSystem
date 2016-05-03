@@ -26,7 +26,7 @@ class ControllerFactory extends CoreAbstractFactory
      */
     public function getController(CoreController $controller){
 
-        $returnController = $this->prepareController($controller);
+        $returnController = $this->injectControllerDependencies($controller);
 
         return $returnController;
 
