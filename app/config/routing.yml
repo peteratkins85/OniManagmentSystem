@@ -1,6 +1,6 @@
 
 
-travel_connect:
+travel_port:
     resource: "@TravelPortBundle/Resources/config/routing.yml"
     prefix:   /
 

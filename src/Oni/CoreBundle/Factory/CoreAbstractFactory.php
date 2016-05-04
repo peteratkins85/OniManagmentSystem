@@ -49,8 +49,8 @@ abstract class CoreAbstractFactory implements ContainerAwareInterface
 
         $controller = $this->injectCommonDependencies($controller);
 
-        if ($this->container->hasParameter('oni_travel_connect.theme')){
-            $controller->setTravelPortTheme($this->container->getParameter('oni_travel_connect.theme'));
+        if ($this->container->hasParameter('oni_travel_port.theme')){
+            $controller->setTravelPortTheme($this->container->getParameter('oni_travel_port.theme'));
         }
 
         return $controller;

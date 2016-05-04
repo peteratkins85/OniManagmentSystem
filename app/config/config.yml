@@ -39,7 +39,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 #    paths:
-#            "%kernel.root_dir%/../themes/travel-connect": travel_connect
+#            "%kernel.root_dir%/../themes/travel-connect": travel_port
 
 # Doctrine Configuration
 doctrine:
