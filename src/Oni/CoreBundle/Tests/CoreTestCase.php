@@ -13,7 +13,7 @@ trait CoreTestCase {
      */
     public function getHost(){
 
-        $container = self::$kernel->getContainer();
+        $container = static::createClient()->getContainer();
 
         if ($container->hasParameter('domain')){
 

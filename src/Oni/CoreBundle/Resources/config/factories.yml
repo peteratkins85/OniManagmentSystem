@@ -1,0 +1,6 @@
+parameters:
+
+services:
+    oni_country_service_factory:
+        class: Oni\CoreBundle\Factory\Service\CountryServiceFactory
+

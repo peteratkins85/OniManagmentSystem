@@ -62,7 +62,11 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         #naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-#        resolve_target_entities:
+        # enable metadata caching
+        metadata_cache_driver: redis
+        # enable query caching
+        query_cache_driver: redis
+        #resolve_target_entities:
         mappings:
             gedmo_tree:
                 type: annotation
@@ -77,6 +81,30 @@ doctrine:
                 #alias: GedmoTranslatable # (optional) it will default to the name set for the mapping
                 is_bundle: false
 
+snc_redis:
+    # configure predis as client
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: redis://localhost
+        doctrine:
+            type: predis
+            alias: doctrine
+            dsn: redis://localhost
+    # configure doctrine caching
+    doctrine:
+        metadata_cache:
+            client: doctrine
+            entity_manager: default
+            document_manager: default
+        result_cache:
+            client: doctrine
+            entity_manager: [default]
+        query_cache:
+            client: doctrine
+            entity_manager: default
+
 stof_doctrine_extensions:
     default_locale: "%locale%"
     orm:
@@ -85,11 +113,7 @@ stof_doctrine_extensions:
             tree: true
             translatable: true
 
-travel_port:
-    providers:
-        wts:
-            password: travel123
-            username: thuraya
+
 
 # Swiftmailer Configuration
 swiftmailer:

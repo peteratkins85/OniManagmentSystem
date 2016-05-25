@@ -2,14 +2,16 @@
 
 namespace Oni\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
 /**
  * Country
  *
- * @ORM\Table(name="oni_country")
+ * @ORM\Table(name="oni_country", indexes={@ORM\Index(name="iso_idx", columns={"iso"})})
  * @ORM\Entity(repositoryClass="Oni\CoreBundle\Entity\Repository\CountryRepository")
+ *
  */
 class Country
 {
@@ -35,6 +37,8 @@ class Country
      * @ORM\Column(name="name", type="string", length=80)
      */
     private $name;
+
+
 
     /**
      * @var string
@@ -72,10 +76,25 @@ class Country
     private $locale;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nationality", type="string", length=25)
+     */
+    private $nationality;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Oni\CoreBundle\Entity\City", mappedBy="country")
+     * 
+     */
+    private $cities;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Oni\CoreBundle\Entity\Zones", inversedBy="countries")
-     * @ORM\JoinTable(name="zone_country_relations",
+     * @ORM\JoinTable(name="oni_zone_country_relations",
      *   joinColumns={
      *     @ORM\JoinColumn(name="zoneId", referencedColumnName="id")
      *   },
@@ -273,6 +292,31 @@ class Country
         return $this->locale;
     }
 
+
+    /**
+     * Set Nationality
+     *
+     * @param string $nationality
+     *
+     * @return Country
+     */
+    public function setNationality($nationality)
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    /**
+     * Get Nationality
+     *
+     * @return string
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
     /**
      * Add zone
      *
@@ -305,5 +349,63 @@ class Country
     public function getZones()
     {
         return $this->zones;
+    }
+
+    /**
+     * Add city
+     *
+     * @param \Oni\CoreBundle\Entity\City $city
+     *
+     * @return Country
+     */
+    public function addCity(\Oni\CoreBundle\Entity\City $city)
+    {
+        $this->cities[] = $city;
+
+        return $this;
+    }
+
+    /**
+     * Remove city
+     *
+     * @param \Oni\CoreBundle\Entity\City $city
+     */
+    public function removeCity(\Oni\CoreBundle\Entity\City $city)
+    {
+        $this->cities->removeElement($city);
+    }
+
+    /**
+     * Get cities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * Set countryName
+     *
+     * @param string $countryName
+     *
+     * @return Country
+     */
+    public function setCountryName($countryName)
+    {
+        $this->countryName = $countryName;
+
+        return $this;
+    }
+
+    /**
+     * Get countryName
+     *
+     * @return string
+     */
+    public function getCountryName()
+    {
+        return $this->countryName;
     }
 }

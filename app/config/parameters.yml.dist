@@ -14,6 +14,14 @@ parameters:
     mailer_host:       127.0.0.1
     mailer_user:       ~
     mailer_password:   ~
-
+    domain: ~
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    #
+    oni_travel_port:
+        theme: default
+        providers:
+            wts:
+                password: ~
+                username: ~

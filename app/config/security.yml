@@ -7,9 +7,6 @@ security:
         ROLE_USER:                       [ROLE_GUEST]
         ROLE_ADMIN:                      [ROLE_USER,ROLE_GUEST]
         ROLE_SUPER_ADMIN:                [ROLE_ADMIN,ROLE_ALLOWED_TO_SWITCH]
-        ROLE_TRAVEL_CONNECT_USER:        [ROLE_TRAVEL_CONNECT_GUEST]
-        ROLE_TRAVEL_CONNECT_ADMIN:       [ROLE_TRAVEL_CONNECT_USER, ROLE_TRAVEL_CONNECT_ADMIN]
-        ROLE_TRAVEL_CONNECT_SUPER_ADMIN: [ROLE_TRAVEL_CONNECT_ADMIN,ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         cms_users:
@@ -33,18 +30,17 @@ security:
                 target: /admin/login
             anonymous: ~
         travel_port:
-            host: '^tc\.%domain%'
-            pattern: ^/
+            pattern: ^/travelportal/
             provider: travel_port_users
             form_login:
                 provider: travel_port_users
-                login_path: /login
-                check_path: /login_check
+                login_path: /travelportal/login
+                check_path: /travelportal/login_check
                 always_use_default_target_path: true
-                default_target_path: /
+                default_target_path: /travelportal/
             logout:
-                path:   /logout
-                target: /login
+                path:   /travelportal/logout
+                target: /travelportal/login
             anonymous: ~
 
     access_control:

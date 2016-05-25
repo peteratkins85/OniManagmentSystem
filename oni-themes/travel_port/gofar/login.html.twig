@@ -1,0 +1,41 @@
+{# src/Atk/CmsBundle/Resources/views/security/login.html.twig #}
+{% extends '@travel_port/gofar/base.html.twig'  %}
+{% block stylesheets %}
+{% endblock %}
+{% block title %}
+    Travel Connect Login
+{% endblock %}
+{% block body %}
+    <section class="awe-parallax login-page-demo">
+        <div class="awe-overlay"></div>
+        <div class="container">
+            <div class="login-register-page__content">
+                <div class="content-title">
+                    <span>Welcome back</span>
+                    <h2>EXPLORER!</h2>
+                </div>
+                <form method="post"  action="{{ path("oni_travel_port_check") }}">
+                    <div class="form-item">
+                        <label>Username</label>
+                        <input type="text"  placeholder="Username" name="_username" value="{{ last_username }}">
+                    </div>
+                    <div class="form-item">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="Password"  name="_password">
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password</a>
+                    <div class="form-actions">
+                        <input type="submit" name="_submit" >
+                    </div>
+                </form>
+                <div class="login-register-link">
+                    Dont have account yet? <a href="register.html">Register HERE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
