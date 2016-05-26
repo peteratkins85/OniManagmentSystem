@@ -86,9 +86,17 @@ class Country
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="Oni\CoreBundle\Entity\City", mappedBy="country")
-     * 
+     *
      */
     private $cities;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Oni\CoreBundle\Entity\Nationality", mappedBy="country")
+     *
+     */
+    private $nationalities;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -407,5 +415,39 @@ class Country
     public function getCountryName()
     {
         return $this->countryName;
+    }
+
+    /**
+     * Add nationality
+     *
+     * @param \Oni\CoreBundle\Entity\Nationality $nationality
+     *
+     * @return Country
+     */
+    public function addNationality(\Oni\CoreBundle\Entity\Nationality $nationality)
+    {
+        $this->nationalities[] = $nationality;
+
+        return $this;
+    }
+
+    /**
+     * Remove nationality
+     *
+     * @param \Oni\CoreBundle\Entity\Nationality $nationality
+     */
+    public function removeNationality(\Oni\CoreBundle\Entity\Nationality $nationality)
+    {
+        $this->nationalities->removeElement($nationality);
+    }
+
+    /**
+     * Get nationalities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNationalities()
+    {
+        return $this->nationalities;
     }
 }

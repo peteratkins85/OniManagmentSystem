@@ -1,6 +1,6 @@
 <?php
 
-namespace Oni\CoreBundle\Repository;
+namespace Oni\CoreBundle\Entity\Repository;
 
 /**
  * NationalityRepository

@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Nationality
  *
- * @ORM\Table(name="nationality")
- * @ORM\Entity(repositoryClass="Oni\CoreBundle\Repository\NationalityRepository")
+ * @ORM\Table(name="oni_nationality")
+ * @ORM\Entity(repositoryClass="Oni\CoreBundle\Entity\Repository\NationalityRepository")
  */
 class Nationality
 {
@@ -34,6 +34,14 @@ class Nationality
      * @ORM\Column(name="enabled", type="boolean")
      */
     private $enabled;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Oni\CoreBundle\Entity\Country", inversedBy="nationalities")
+     * @ORM\JoinColumn(name="countryId", referencedColumnName="id")
+     *
+     */
+    private $country;
 
 
     /**
@@ -93,5 +101,28 @@ class Nationality
     {
         return $this->enabled;
     }
-}
 
+    /**
+     * Set country
+     *
+     * @param \Oni\CoreBundle\Entity\Country $country
+     *
+     * @return Nationality
+     */
+    public function setCountry(\Oni\CoreBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \Oni\CoreBundle\Entity\Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+}

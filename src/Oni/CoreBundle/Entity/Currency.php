@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Currency
  *
- * @ORM\Table(name="currency")
- * @ORM\Entity(repositoryClass="Oni\CoreBundle\Repository\CurrencyRepository")
+ * @ORM\Table(name="oni_currency")
+ * @ORM\Entity(repositoryClass="Oni\CoreBundle\Entity\Repository\CurrencyRepository")
  */
 class Currency
 {
@@ -38,9 +38,9 @@ class Currency
     /**
      * @var string
      *
-     * @ORM\Column(name="currecnySymbol", type="string", length=100)
+     * @ORM\Column(name="currencySymbol", type="string", length=100)
      */
-    private $currecnySymbol;
+    private $currencySymbol;
 
 
     /**
@@ -108,9 +108,9 @@ class Currency
      *
      * @return Currency
      */
-    public function setCurrecnySymbol($currecnySymbol)
+    public function setCurrencySymbol($currencySymbol)
     {
-        $this->currecnySymbol = $currecnySymbol;
+        $this->currencySymbol = $currencySymbol;
 
         return $this;
     }
@@ -120,9 +120,8 @@ class Currency
      *
      * @return string
      */
-    public function getCurrecnySymbol()
+    public function getCurrencySymbol()
     {
-        return $this->currecnySymbol;
+        return $this->currencySymbol;
     }
 }
-
