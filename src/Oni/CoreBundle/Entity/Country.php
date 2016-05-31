@@ -43,9 +43,9 @@ class Country
     /**
      * @var string
      *
-     * @ORM\Column(name="nicename", type="string", length=80)
+     * @ORM\Column(name="niceName", type="string", length=80)
      */
-    private $nicename;
+    private $niceName;
 
     /**
      * @var string
@@ -76,13 +76,6 @@ class Country
     private $locale;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nationality", type="string", length=25)
-     */
-    private $nationality;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="Oni\CoreBundle\Entity\City", mappedBy="country")
@@ -91,7 +84,6 @@ class Country
     private $cities;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="Oni\CoreBundle\Entity\Nationality", mappedBy="country")
      *
@@ -181,27 +173,27 @@ class Country
     }
 
     /**
-     * Set nicename
+     * Set niceName
      *
-     * @param string $nicename
+     * @param string $niceName
      *
      * @return Country
      */
-    public function setNicename($nicename)
+    public function setNiceName($niceName)
     {
-        $this->nicename = $nicename;
+        $this->niceName = $niceName;
 
         return $this;
     }
 
     /**
-     * Get nicename
+     * Get niceName
      *
      * @return string
      */
-    public function getNicename()
+    public function getNiceName()
     {
-        return $this->nicename;
+        return $this->niceName;
     }
 
     /**
@@ -298,31 +290,6 @@ class Country
     public function getLocale()
     {
         return $this->locale;
-    }
-
-
-    /**
-     * Set Nationality
-     *
-     * @param string $nationality
-     *
-     * @return Country
-     */
-    public function setNationality($nationality)
-    {
-        $this->nationality = $nationality;
-
-        return $this;
-    }
-
-    /**
-     * Get Nationality
-     *
-     * @return string
-     */
-    public function getNationality()
-    {
-        return $this->nationality;
     }
 
     /**

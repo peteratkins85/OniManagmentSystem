@@ -1,0 +1,3 @@
+oni_core_request:
+    path:     /core/request
+    defaults: { _controller: oni_general_service_controller:requestAction }

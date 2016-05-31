@@ -42,6 +42,20 @@ class Currency
      */
     private $currencySymbol;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="isDefault", type="integer", length=11)
+     */
+    private $isDefault;
+
+    /**
+     * @var
+     *
+     * @ORM\Column(name="currencyName", type="string", length=120)
+     */
+    private $currencyName;
+
 
     /**
      * Get id
@@ -123,5 +137,53 @@ class Currency
     public function getCurrencySymbol()
     {
         return $this->currencySymbol;
+    }
+
+    /**
+     * Set isDefault
+     *
+     * @param integer $isDefault
+     *
+     * @return Currency
+     */
+    public function setIsDefault($isDefault)
+    {
+        $this->isDefault = $isDefault;
+
+        return $this;
+    }
+
+    /**
+     * Get isDefault
+     *
+     * @return integer
+     */
+    public function getIsDefault()
+    {
+        return $this->isDefault;
+    }
+
+    /**
+     * Set currencyName
+     *
+     * @param string $currencyName
+     *
+     * @return Currency
+     */
+    public function setCurrencyName($currencyName)
+    {
+        $this->currencyName = $currencyName;
+
+        return $this;
+    }
+
+    /**
+     * Get currencyName
+     *
+     * @return string
+     */
+    public function getCurrencyName()
+    {
+        return $this->currencyName;
     }
 }

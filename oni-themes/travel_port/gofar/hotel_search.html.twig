@@ -5,6 +5,9 @@
             float: none;
             width: auto !important;
         }
+        .room-type{
+            width: 250px;
+        }
     </style>
 {% endblock %}
 {% block title %}
@@ -75,7 +78,11 @@
                         <div class="form-elements">
                             {{ form_label(hotelSearchForm.rating) }}
                             <div class="form-item">
-                                {{ form_widget(hotelSearchForm.rating) }}
+                                {{ form_widget(hotelSearchForm.rating, {
+                                    'attr': {
+                                        'style': 'width:50%;'
+                                    }
+                                }) }}
                             </div>
                         </div>
 
@@ -682,6 +689,11 @@
                 maxDate: "+1Y",
                 dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat']
             });
+            $("#hotel_search_form_rating").select2({
+                placeholder: "Select hotel rating"
+            });
+            
+
         });
     </script>
 
