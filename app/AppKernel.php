@@ -23,7 +23,9 @@ class AppKernel extends Kernel
             new Snc\RedisBundle\SncRedisBundle(),
             new Oni\CoreBundle\CoreBundle(),
             new Oni\TravelPortBundle\TravelPortBundle(),
-            new Misd\GuzzleBundle\MisdGuzzleBundle()
+            new Misd\GuzzleBundle\MisdGuzzleBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

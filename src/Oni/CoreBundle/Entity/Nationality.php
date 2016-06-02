@@ -2,6 +2,7 @@
 
 namespace Oni\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,6 +21,17 @@ class Nationality
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     *
+     * @var Country
+     *
+     * @ORM\ManyToOne(targetEntity="Oni\CoreBundle\Entity\Country", inversedBy="nationalities")
+     * @ORM\JoinColumn(name="countryId", referencedColumnName="id")
+     *
+     */
+    private $country;
+
 
     /**
      * @var string
@@ -35,13 +47,6 @@ class Nationality
      */
     private $enabled;
 
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="Oni\CoreBundle\Entity\Country", inversedBy="nationalities")
-     * @ORM\JoinColumn(name="countryId", referencedColumnName="id")
-     *
-     */
-    private $country;
 
 
     /**
@@ -125,4 +130,10 @@ class Nationality
     {
         return $this->country;
     }
+
+    public function __toString() {
+        return $this->getNationality();
+    }
+
+
 }

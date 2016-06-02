@@ -15,12 +15,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 
-abstract class CoreAbstractFactory implements ContainerAwareInterface
+abstract class CoreAbstractFactory implements ContainerAwareInterface, CoreFactoryInterface
 {
     /**
      * @var ContainerInterface
      */
     protected $container;
+
+    abstract function getService( ContainerInterface $serviceContainer );
 
     /**
      *

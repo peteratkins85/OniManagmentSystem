@@ -20,6 +20,12 @@ services:
         factory: [ '@doctrine.orm.default_entity_manager',  getRepository]
         arguments:
             - Oni\CoreBundle\Entity\Languages
+    #Controllers
+    oni_general_service_controller:
+        class: Oni\CoreBundle\Controller\GeneralServiceController
+        factory: ['@oni_general_service_controller_factory', getService ]
+        arguments:
+            - '@service_container'
     #Services
     oni_core_service:
         class: "%oni_core_service%"

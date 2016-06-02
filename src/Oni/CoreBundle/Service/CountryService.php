@@ -10,6 +10,12 @@ namespace Oni\CoreBundle\Service;
 
 
 use Doctrine\Common\Persistence\ObjectRepository;
+use Oni\CoreBundle\Doctrine\Spec\CitySearch;
+use Oni\CoreBundle\Entity\City;
+use Oni\CoreBundle\Entity\Country;
+use Oni\CoreBundle\Entity\Repository\CityRepository;
+use Oni\CoreBundle\Entity\Repository\CountryRepository;
+use Oni\CoreBundle\Entity\Repository\NationalityRepository;
 
 class CountryService {
 	
@@ -24,14 +30,23 @@ class CountryService {
 	protected $cityRepository;
 
 	/**
+	 * @var \Oni\CoreBundle\Entity\Repository\NationalityRepository
+	 */
+	protected $nationalityRepository;
+
+	/**
 	 * @var string
 	 */
 	protected $class;
 
-	public function __construct(ObjectRepository $countryRepository,ObjectRepository $cityRepository)
+	public function __construct(
+		CountryRepository $countryRepository,
+		CityRepository $cityRepository,
+		NationalityRepository $nationalityRepository)
 	{
 		$this->countryRepository = $countryRepository;
 		$this->cityRepository = $cityRepository;
+		$this->nationalityRepository = $nationalityRepository;
 	}
 
 	public function findCountryBy($criteria){
@@ -60,6 +75,7 @@ class CountryService {
 
 	public function getNationalities(){
 
+		return $this->nationalityRepository->findAll();
 
 	}
 
@@ -71,7 +87,22 @@ class CountryService {
 
 	public function getCities(){
 
-		return $this->cityRepository->findAll();
+		return $this->cityRepository->createQueryBuilder('ci')
+			->select(array(
+				'co.niceName',
+				'ci.id',
+				'ci.cityName'
+			))
+			->join('ci.country', 'co')
+			->getQuery()
+			->getArrayResult();
+
+	}
+
+	public function getCitiesBy($searchTerm){
+
+		$citySearch = new CitySearch($searchTerm);
+		return $this->cityRepository->match($citySearch);
 
 	}
 

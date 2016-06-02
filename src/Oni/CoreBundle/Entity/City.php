@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     @ORM\UniqueConstraint(name="country_cityname_idx", columns={"countryId", "cityName"})})
  * @ORM\Entity(repositoryClass="Oni\CoreBundle\Entity\Repository\CityRepository")
  */
-class City
+class City implements \JsonSerializable
 {
     /**
      * @var int
@@ -101,4 +101,13 @@ class City
     }
 
 
+    function jsonSerialize() {
+
+        return array(
+            'cityName' => $this->cityName,
+            'countryName' => $this->country->getNiceName(),
+            'cityId' => $this->id
+        );
+
+    }
 }

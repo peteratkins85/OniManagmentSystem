@@ -1,0 +1,21 @@
+{
+  "name": "oni-sys",
+  "authors": [
+    "Peter Atkins <peter.atkins85@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "typeahead.js": ">=0.*"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "web/js_dependencies",
+    "test",
+    "tests"
+  ]
+}

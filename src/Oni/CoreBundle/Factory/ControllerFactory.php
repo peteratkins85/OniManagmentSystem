@@ -24,14 +24,12 @@ class ControllerFactory extends CoreAbstractFactory
      * @return CoreController
      *
      */
-    public function getController(CoreController $controller){
+    public function getService(CoreController $controller){
 
         $returnController = $this->injectControllerDependencies($controller);
 
         return $returnController;
 
     }
-
-
 
 }

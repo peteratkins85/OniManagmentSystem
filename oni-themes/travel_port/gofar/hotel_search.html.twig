@@ -3,9 +3,16 @@
     <style>
         .category-heading-content .find .form-elements{
             float: none;
-            width: auto !important;
+            /*width: auto !important;*/
         }
-    </style>
+        .room-type{
+            width: 250px;
+        }
+        #suggester{
+            width: 100%;
+            display: none;
+        }
+        </style>
 {% endblock %}
 {% block title %}
     Travel Connect Home
@@ -15,7 +22,7 @@
 <section class="awe-parallax category-heading-section-demo">
     <div class="awe-overlay"></div>
     <div class="container">
-        <div class="category-heading-content category-heading-content__2 text-uppercase">
+        <div class="hotel-search-content hotel-search-content__2 text-uppercase">
             <!-- BREADCRUMB -->
             <div class="breadcrumb">
                 <ul>
@@ -29,12 +36,28 @@
                 {{ form_start(hotelSearchForm) }}
                     <div class="form-group">
                         <div class="form-elements">
-                            {{ form_label(hotelSearchForm.location) }}
+                            {{ form_label(hotelSearchForm.country) }}
                             <div class="form-item">
                                 <i class="awe-icon awe-icon-marker-1"></i>
-                                {{ form_widget(hotelSearchForm.location) }}
+                                {{ form_widget(hotelSearchForm.country, {
+                                    'attr': {
+                                        'class': 'select2',
+                                    }
+                                }) }}
                             </div>
                         </div>
+                        <div class="form-elements">
+                            {{ form_label(hotelSearchForm.city) }}
+                            <div class="form-item">
+                                <i class="awe-icon awe-icon-marker-1"></i>
+                                    <div>  </div>
+                                </div>
+                                {{ form_widget(hotelSearchForm.city, {
+                                    'attr': {
+                                        'class': 'select2'
+                                    }
+                                }) }}
+                            </div>
                         <div class="form-elements">
                             {{ form_label(hotelSearchForm.checkIn) }}
                             <div class="form-item">
@@ -64,18 +87,14 @@
                                 {{ form_widget(hotelSearchForm.nationality) }}
                             </div>
                         </div>
-
-                        <div class="form-elements">
-                            {{ form_label(hotelSearchForm.availableOnly) }}
-                            <div class="form-item">
-                                {{ form_widget(hotelSearchForm.availableOnly) }}
-                            </div>
-                        </div>
-
                         <div class="form-elements">
                             {{ form_label(hotelSearchForm.rating) }}
                             <div class="form-item">
-                                {{ form_widget(hotelSearchForm.rating) }}
+                                {{ form_widget(hotelSearchForm.rating, {
+                                    'attr': {
+                                        'style': 'width:100%;'
+                                    }
+                                }) }}
                             </div>
                         </div>
 
@@ -682,6 +701,19 @@
                 maxDate: "+1Y",
                 dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat']
             });
+
+            $("#hotel_search_form_rating").select2({
+                placeholder: "Select hotel rating"
+            });
+
+            $('#hotel_search_form_location').on('change',function(){
+
+                if ($(this).val().length > 3){
+
+                }
+
+            });
+
         });
     </script>
 
