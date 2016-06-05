@@ -35,7 +35,7 @@ class GeneralServiceController extends CoreController{
 
 		$jsonResponse = new JsonResponse();
 	
-		if ($request->isMethod('GET')) {
+		if ($request->isMethod('POST')) {
 
 			if ($request->get('citySearch')) {
 
@@ -49,11 +49,15 @@ class GeneralServiceController extends CoreController{
 
 			} elseif ($request->get('getCities')) {
 
-				$results = $this->countryService->getCities();
+				if ($countryId = $request->get('countryId')) {
 
-				return $jsonResponse->setData(
-					$results
-				);
+					$results = $this->countryService->getCitiesByCountryId($countryId);
+
+					return $jsonResponse->setData(
+						$results
+					);
+
+				}
 				
 			}
 

@@ -9,12 +9,12 @@
 namespace Oni\CoreBundle\Service;
 
 
-use Doctrine\Common\Persistence\ObjectRepository;
-use Oni\CoreBundle\Doctrine\Spec\CitySearch;
-use Oni\CoreBundle\Entity\City;
-use Oni\CoreBundle\Entity\Country;
+use Oni\CoreBundle\Doctrine\Spec\City\CitySearch;
+use Oni\CoreBundle\Doctrine\Spec\City\GetCitiesByCountry;
+use Oni\CoreBundle\Doctrine\Spec\Currency\GetCurrenciesByCodes;
 use Oni\CoreBundle\Entity\Repository\CityRepository;
 use Oni\CoreBundle\Entity\Repository\CountryRepository;
+use Oni\CoreBundle\Entity\Repository\CurrencyRepository;
 use Oni\CoreBundle\Entity\Repository\NationalityRepository;
 
 class CountryService {
@@ -35,18 +35,22 @@ class CountryService {
 	protected $nationalityRepository;
 
 	/**
-	 * @var string
+	 * @var \Oni\CoreBundle\Entity\Repository\CurrencyRepository
 	 */
-	protected $class;
+	protected $currencyRepository;
 
 	public function __construct(
 		CountryRepository $countryRepository,
 		CityRepository $cityRepository,
-		NationalityRepository $nationalityRepository)
+		NationalityRepository $nationalityRepository,
+		CurrencyRepository $currencyRepository
+	)
 	{
 		$this->countryRepository = $countryRepository;
 		$this->cityRepository = $cityRepository;
 		$this->nationalityRepository = $nationalityRepository;
+		$this->currencyRepository = $currencyRepository;
+	;
 	}
 
 	public function findCountryBy($criteria){
@@ -78,6 +82,15 @@ class CountryService {
 		return $this->nationalityRepository->findAll();
 
 	}
+	
+	public function getCurrenciesByCurrencyCodes($currencyCodes){
+
+		$spec = new GetCurrenciesByCodes($currencyCodes);
+		$results = $this->currencyRepository->match($spec);
+
+		return $results;
+
+	}
 
 	public function getCountries(){
 
@@ -85,17 +98,12 @@ class CountryService {
 
 	}
 
-	public function getCities(){
+	public function getCitiesByCountryId($countryId){
 
-		return $this->cityRepository->createQueryBuilder('ci')
-			->select(array(
-				'co.niceName',
-				'ci.id',
-				'ci.cityName'
-			))
-			->join('ci.country', 'co')
-			->getQuery()
-			->getArrayResult();
+		$spec = new GetCitiesByCountry($countryId);
+		$results = $this->cityRepository->match($spec);
+
+		return $results;
 
 	}
 

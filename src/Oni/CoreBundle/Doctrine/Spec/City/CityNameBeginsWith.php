@@ -6,11 +6,12 @@
  * Time: 13:06
  */
 
-namespace Oni\CoreBundle\Doctrine\Spec;
+namespace Oni\CoreBundle\Doctrine\Spec\City;
 
 
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
+use Oni\CoreBundle\Doctrine\Spec\Specification;
 
 class CityNameBeginsWith implements Specification
 {

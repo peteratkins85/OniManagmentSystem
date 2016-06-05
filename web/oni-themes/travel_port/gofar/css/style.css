@@ -2327,23 +2327,29 @@ span.dropcap {
         width: 25%;
         padding-right: 30px; }
       .hotel-search-content .find .form-elements:nth-child(5) {
-        width: 15%;
-        padding-right: 40px; }
+        width: 25%;
+        padding-right: 40px;
+        padding-top: 10px; }
       .hotel-search-content .find .form-elements:nth-child(6) {
-        width: 15%;
-        padding-right: 40px; }
+        width: 25%;
+        padding-right: 40px;
+        padding-top: 10px; }
       .hotel-search-content .find .form-elements:nth-child(7) {
         width: 25%;
-        padding-right: 40px; }
+        padding-right: 40px;
+        padding-top: 10px; }
       .hotel-search-content .find .form-elements:nth-child(8) {
-        width: 15%;
-        padding-right: 40px; }
+        width: 25%;
+        padding-right: 40px;
+        padding-top: 10px; }
       .hotel-search-content .find .form-elements:nth-child(9) {
-        width: 15%;
-        padding-right: 40px; }
+        width: 25%;
+        padding-right: 40px;
+        padding-top: 10px; }
       .hotel-search-content .find .form-elements:nth-child(10) {
-        width: 15%;
-        padding-right: 40px; }
+        width: 25%;
+        padding-right: 40px;
+        padding-top: 10px; }
       .hotel-search-content .find .form-elements label {
         display: block;
         font-size: 14px;
@@ -2355,6 +2361,15 @@ span.dropcap {
         line-height: 36px;
         height: 36px;
         width: 100%; }
+      .hotel-search-content .find .form-elements .select2-selection {
+        height: 36px;
+        min-height: 36px;
+        overflow: scroll; }
+      .hotel-search-content .find .form-elements .select2-selection__choice {
+        color: black; }
+      .hotel-search-content .find .form-elements .select2-search__field {
+        margin-top: 0;
+        height: 29px; }
       .hotel-search-content .find .form-elements .form-item {
         position: relative; }
       .hotel-search-content .find .form-elements .awe-icon {
@@ -2373,7 +2388,7 @@ span.dropcap {
       .hotel-search-content .find .form-elements .awe-select-wrapper {
         width: 100%; }
     .hotel-search-content .find .form-actions {
-      margin-top: 28px; }
+      margin-top: 175px; }
       .hotel-search-content .find .form-actions input, .hotel-search-content .find .form-actions button {
         position: relative;
         display: block;

@@ -29,6 +29,14 @@ class City implements \JsonSerializable
      * @ORM\Column(name="cityName", type="string", length=150)
      */
     private $cityName;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="countryId", type="integer", length=11)
+     * 
+     */
+    private $countryId;
     
     /**
      *
@@ -109,5 +117,29 @@ class City implements \JsonSerializable
             'cityId' => $this->id
         );
 
+    }
+
+    /**
+     * Set countryId
+     *
+     * @param integer $countryId
+     *
+     * @return City
+     */
+    public function setCountryId($countryId)
+    {
+        $this->countryId = $countryId;
+
+        return $this;
+    }
+
+    /**
+     * Get countryId
+     *
+     * @return integer
+     */
+    public function getCountryId()
+    {
+        return $this->countryId;
     }
 }

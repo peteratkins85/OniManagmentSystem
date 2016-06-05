@@ -14,14 +14,6 @@ use Oni\CoreBundle\Doctrine\Spec\Specification;
 class CityRepository extends \Doctrine\ORM\EntityRepository
 {
 
-	public function __construct(
-		\Doctrine\ORM\EntityManager $em,
-		\Doctrine\ORM\Mapping\ClassMetadata $class
-	) {
-		parent::__construct( $em, $class );
-
-	}
-
 	public function match(Specification $specification)
 	{
 		if ( ! $specification->supports($this->getEntityName())) {

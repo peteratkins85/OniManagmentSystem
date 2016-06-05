@@ -2,6 +2,8 @@
 
 namespace Oni\CoreBundle\Entity\Repository;
 
+use Oni\CoreBundle\Doctrine\Spec\Specification;
+
 /**
  * CurrencyRepository
  *
@@ -10,4 +12,21 @@ namespace Oni\CoreBundle\Entity\Repository;
  */
 class CurrencyRepository extends \Doctrine\ORM\EntityRepository
 {
+
+	public function match(Specification $specification)
+	{
+		if ( ! $specification->supports($this->getEntityName())) {
+			throw new \InvalidArgumentException("Specification not supported by this repository.");
+		}
+
+		$qb = $this->createQueryBuilder('c');
+		$expr = $specification->match($qb, 'c');
+
+		$query = $qb->where($expr)->getQuery();
+
+		$specification->modifyQuery($query);
+
+		return $query->getResult();
+	}
+
 }

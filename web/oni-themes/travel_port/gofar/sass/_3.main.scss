@@ -1333,28 +1333,34 @@
                 padding-right: 30px;
             }
             &:nth-child(5) {
-                width: 15%;
+                width: 25%;
                 padding-right: 40px;
+                padding-top: 10px;
             }
             &:nth-child(6) {
-                width: 15%;
+                width: 25%;
                 padding-right: 40px;
+                padding-top: 10px;
             }
             &:nth-child(7) {
                 width: 25%;
                 padding-right: 40px;
+                padding-top: 10px;
             }
             &:nth-child(8) {
-                width: 15%;
+                width: 25%;
                 padding-right: 40px;
+                padding-top: 10px;
             }
             &:nth-child(9) {
-                width: 15%;
+                width: 25%;
                 padding-right: 40px;
+                padding-top: 10px;
             }
             &:nth-child(10) {
-                width: 15%;
+                width: 25%;
                 padding-right: 40px;
+                padding-top: 10px;
             }
             label {
                 display: block;
@@ -1369,16 +1375,21 @@
                 height: 36px;
                 width: 100%;
             }
+            .select2-selection{
+                height: 36px;
+                min-height: 36px;
+                overflow: scroll;
+            }
+            .select2-selection__choice{
+                color: black;
+            }
+            .select2-search__field{
+                margin-top: 0;
+                height:29px;
+            }
             .form-item {
                 position: relative;
             }
-            //span {
-            //    display: inline-block;
-            //    font-size: 11px;
-            //    font-weight: 600;
-            //    color: #A5A5A5;
-            //    margin-top: 8px;
-            //}
             .awe-icon {
                 position: absolute;
                 width: 36px;
@@ -1398,7 +1409,7 @@
             }
         }
         .form-actions {
-            margin-top: 28px;
+            margin-top: 175px;
             input, button {
                 position: relative;
                 display: block;
