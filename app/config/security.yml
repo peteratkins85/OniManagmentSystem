@@ -1,4 +1,6 @@
 security:
+    acl:
+        connection: default
     encoders:
         Oni\UserManagerBundle\Entity\User: sha512
         Oni\TravelPortBundle\Entity\User: sha512

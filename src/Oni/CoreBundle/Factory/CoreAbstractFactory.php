@@ -7,6 +7,7 @@
  */
 
 namespace Oni\CoreBundle\Factory;
+
 use Doctrine\ORM\EntityRepository;
 use Oni\CoreBundle\Controller\CoreController;
 use Oni\CoreBundle\Entity\TranslatorAwareInterface;
@@ -22,7 +23,7 @@ abstract class CoreAbstractFactory implements ContainerAwareInterface, CoreFacto
      */
     protected $container;
 
-    abstract function getService( ContainerInterface $serviceContainer );
+    abstract function getService(ContainerInterface $serviceContainer);
 
     /**
      *
@@ -45,13 +46,14 @@ abstract class CoreAbstractFactory implements ContainerAwareInterface, CoreFacto
      * @return CoreController
      *
      */
-    protected function injectControllerDependencies(CoreController $controller){
+    protected function injectControllerDependencies(CoreController $controller)
+    {
 
         $bundles = $this->container->getParameter('kernel.bundles');
 
         $controller = $this->injectCommonDependencies($controller);
 
-        if ($this->container->hasParameter('oni_travel_port.theme')){
+        if ($this->container->hasParameter('oni_travel_port.theme')) {
             $controller->setTravelPortTheme($this->container->getParameter('oni_travel_port.theme'));
         }
 
@@ -69,7 +71,9 @@ abstract class CoreAbstractFactory implements ContainerAwareInterface, CoreFacto
      * @return CoreController
      *
      */
-    protected function injectRepositoryDependencies(EntityRepository $repository){
+    protected function injectRepositoryDependencies(EntityRepository $repository
+    )
+    {
 
         $repository = $this->injectCommonDependencies($repository);
 
@@ -77,7 +81,8 @@ abstract class CoreAbstractFactory implements ContainerAwareInterface, CoreFacto
 
     }
 
-    protected function injectCommonDependencies($class){
+    protected function injectCommonDependencies($class)
+    {
 
         if ($class instanceof TranslatorAwareInterface) {
             $class->setTranslator($this->container->get('translator'));
