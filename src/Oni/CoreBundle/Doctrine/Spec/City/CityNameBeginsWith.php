@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: peteratkins
- * Date: 22/05/2016
- * Time: 13:06
- */
 
 namespace Oni\CoreBundle\Doctrine\Spec\City;
 

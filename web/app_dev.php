@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Europe/London');
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 // If you don't want to setup permissions the proper way, just uncomment the following PHP line

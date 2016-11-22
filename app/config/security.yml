@@ -13,8 +13,8 @@ security:
     providers:
         cms_users:
             id: oni_user_provider
-        travel_port_users:
-            id: oni_travel_port_user_provider
+#        travel_port_users:
+#            id: oni_travel_port_user_provider
 
 
     firewalls:
@@ -31,19 +31,19 @@ security:
                 path:   /admin/logout
                 target: /admin/login
             anonymous: ~
-        travel_port:
-            pattern: ^/travelportal/
-            provider: travel_port_users
-            form_login:
-                provider: travel_port_users
-                login_path: /travelportal/login
-                check_path: /travelportal/login_check
-                always_use_default_target_path: true
-                default_target_path: /travelportal/hotel-search
-            logout:
-                path:   /travelportal/logout
-                target: /travelportal/login
-            anonymous: ~
+#        travel_port:
+#            pattern: ^/travelportal/
+#            provider: travel_port_users
+#            form_login:
+#                provider: travel_port_users
+#                login_path: /travelportal/login
+#                check_path: /travelportal/login_check
+#                always_use_default_target_path: true
+#                default_target_path: /travelportal/hotel-search
+#            logout:
+#                path:   /travelportal/logout
+#                target: /travelportal/login
+#            anonymous: ~
 
     access_control:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -53,10 +53,3 @@ security:
 #        - { path: ^/tc/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/tc/*,role: ROLE_TRAVEL_CONNECT_USER }
 
-# activate different ways to authenticate
-
-# http_basic: ~
-# http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-# form_login: ~
-# http://symfony.com/doc/current/cookbook/security/form_login_setup.html

@@ -8,88 +8,28 @@
 
 namespace Oni\CoreBundle\Factory;
 
-use Doctrine\ORM\EntityRepository;
-use Oni\CoreBundle\Controller\CoreController;
 use Oni\CoreBundle\Entity\TranslatorAwareInterface;
-use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
-abstract class CoreAbstractFactory implements ContainerAwareInterface, CoreFactoryInterface
+abstract class CoreAbstractFactory implements CoreFactoryInterface
 {
-    /**
-     * @var ContainerInterface
-     */
-    protected $container;
 
     abstract function getService(ContainerInterface $serviceContainer);
 
-    /**
-     *
-     *
-     * @param ContainerInterface|null $container
-     *
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
 
-
-    /**
-     *
-     * Set container and translator
-     *
-     * @param CoreController $controller
-     *
-     * @return CoreController
-     *
-     */
-    protected function injectControllerDependencies(CoreController $controller)
+    protected function injectCommonDependencies($class, ContainerInterface $container)
     {
 
-        $bundles = $this->container->getParameter('kernel.bundles');
-
-        $controller = $this->injectCommonDependencies($controller);
-
-        if ($this->container->hasParameter('oni_travel_port.theme')) {
-            $controller->setTravelPortTheme($this->container->getParameter('oni_travel_port.theme'));
-        }
-
-        return $controller;
-
-    }
-
-
-    /**
-     *
-     * Set container and translator
-     *
-     * @param CoreController $controller
-     *
-     * @return CoreController
-     *
-     */
-    protected function injectRepositoryDependencies(EntityRepository $repository
-    )
-    {
-
-        $repository = $this->injectCommonDependencies($repository);
-
-        return $repository;
-
-    }
-
-    protected function injectCommonDependencies($class)
-    {
+        $bundles = $container->getParameter('kernel.bundles');
 
         if ($class instanceof TranslatorAwareInterface) {
-            $class->setTranslator($this->container->get('translator'));
+            $class->setTranslator($container->get('translator'));
         }
 
         if ($class instanceof ContainerAwareInterface) {
-            $class->setContainer($this->container);
+            $class->setContainer($container);
         }
 
         return $class;

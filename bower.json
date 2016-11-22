@@ -9,7 +9,9 @@
   "license": "MIT",
   "homepage": "",
   "dependencies": {
-    "typeahead.js": ">=0.*"
+    "typeahead.js": ">=0.*",
+    "datatables.net": "^1.10.12",
+    "vue": "^2.0.5"
   },
   "ignore": [
     "**/.*",

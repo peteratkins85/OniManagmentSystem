@@ -43,17 +43,13 @@ class LocaleListener implements EventSubscriberInterface
         if ($locale = $request->attributes->get('_locale')) {
             $request->getSession()->set(SessionKeys::LOCALE_KEY, $locale);
         } elseif ($request->get('locale') && ctype_alpha($request->get('locale')))  {
-
             $locale = $request->get('locale');
             $isValidLocale = $this->container->get('oni_language_repository')->isValidLocale($locale);
 
             if ($isValidLocale){
-
                 $request->setLocale($locale);
                 $request->getSession()->set(SessionKeys::LOCALE_KEY, $locale);
-
             }
-
         }else{
             // if no explicit locale has been set on this request, use one from the session
             $type = gettype($this->container->get('oni_get_locale'));
@@ -62,7 +58,7 @@ class LocaleListener implements EventSubscriberInterface
             $request->setLocale($locale);
         }
 
-        $this->container->get('stof_doctrine_extensions.listener.translatable')->setTranslationFallback(false);
+        //$this->container->get('stof_doctrine_extensions.listener.translatable')->setTranslationFallback(false);
 
     }
 

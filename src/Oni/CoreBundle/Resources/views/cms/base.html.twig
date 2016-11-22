@@ -20,8 +20,8 @@
         {% block body %}
         {% endblock %}
     </div>
-        {% block javascripts %}{% endblock %}
         {{ include('CoreBundle:cms:javascript-include.html.twig') }}
         {{ include('@Core/cms/modals.html.twig') }}
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

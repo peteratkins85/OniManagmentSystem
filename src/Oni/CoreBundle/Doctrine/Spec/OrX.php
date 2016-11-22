@@ -11,7 +11,7 @@ namespace Oni\CoreBundle\Doctrine\Spec;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 
-class AndX implements Specification
+class OrX implements Specification
 {
     private $children;
 
@@ -23,7 +23,7 @@ class AndX implements Specification
     public function match(QueryBuilder $qb, $dqlAlias)
     {
         return call_user_func_array(
-            [$qb->expr(), 'andX'],
+            [$qb->expr(), 'orX'],
             array_map(function ($specification) use ($qb, $dqlAlias) {
                 return $specification->match($qb, $dqlAlias);
             }, $this->children

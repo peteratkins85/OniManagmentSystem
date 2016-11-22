@@ -14,22 +14,44 @@ use Oni\CoreBundle\Doctrine\Spec\Specification;
 
 class AsArrayLimit implements Specification
 {
+    /**
+     * @var \Oni\CoreBundle\Doctrine\Spec\Specification
+     */
 	private $parent;
 
-	private $maxResults;
+    /**
+     * @var int
+     */
+	private $maxResults = 10;
 
-	public function __construct(Specification $parent, $maxResults = 10)
+    /**
+     * AsArrayLimit constructor.
+     * @param \Oni\CoreBundle\Doctrine\Spec\Specification $parent
+     * @param int $maxResults
+     */
+	public function __construct(Specification $parent, int $maxResults = 0)
 	{
 		$this->parent = $parent;
-		$this->maxResults = $maxResults;
+
+        if ($maxResults) {
+            $this->maxResults = $maxResults;
+        }
 	}
 
+    /**
+     * @param Query $query
+     */
 	public function modifyQuery(Query $query)
 	{
 		$query->setHydrationMode(Query::HYDRATE_ARRAY)
 			->setMaxResults($this->maxResults);
 	}
 
+    /**
+     * @param QueryBuilder $qb
+     * @param string $dqlAlias
+     * @return Query\Expr
+     */
 	public function match(QueryBuilder $qb, $dqlAlias)
 	{
 		return $this->parent->match($qb, $dqlAlias);

@@ -16,3 +16,7 @@ dashboard_manager:
 user_manager:
     resource: "@UserManagerBundle/Resources/config/routing.yml"
     prefix:   /
+
+product_manager:
+    resource: "@ProductManagerBundle/Resources/config/routing.yml"
+    prefix:   /
