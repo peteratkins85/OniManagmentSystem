@@ -3,9 +3,7 @@
  */
 
 
-$( document ).ready(function() {
-
-    $(".oni-delete-action").click( function(e) {
+$(document).on('click', '.oni-delete-action', function() {
 
         var url = $(this).attr('delete-url');
         var msg = $(this).attr('delete-msg');
@@ -18,8 +16,5 @@ $( document ).ready(function() {
 
         }
 
-
-    });
-
-
 });
+

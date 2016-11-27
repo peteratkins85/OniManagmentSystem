@@ -25,13 +25,19 @@ class AsArrayLimit implements Specification
 	private $maxResults = 10;
 
     /**
+     * @var int
+     */
+    private $offSet = 0;
+
+    /**
      * AsArrayLimit constructor.
      * @param \Oni\CoreBundle\Doctrine\Spec\Specification $parent
      * @param int $maxResults
      */
-	public function __construct(Specification $parent, int $maxResults = 0)
+	public function __construct(Specification $parent, int $maxResults = 0, int $offSet = 0)
 	{
 		$this->parent = $parent;
+        $this->offSet = $offSet;
 
         if ($maxResults) {
             $this->maxResults = $maxResults;
@@ -44,7 +50,8 @@ class AsArrayLimit implements Specification
 	public function modifyQuery(Query $query)
 	{
 		$query->setHydrationMode(Query::HYDRATE_ARRAY)
-			->setMaxResults($this->maxResults);
+			->setMaxResults($this->maxResults)
+            ->setFirstResult($this->offSet);
 	}
 
     /**

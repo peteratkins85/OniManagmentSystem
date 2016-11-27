@@ -9,6 +9,7 @@
 !app/logs/.gitkeep
 /build/
 /vendor/
+/node_modules
 /var/
 /var/cache/*
 /var/logs/*

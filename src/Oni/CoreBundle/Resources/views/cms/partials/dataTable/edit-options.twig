@@ -1,0 +1,15 @@
+
+<div class='text-right'>
+    {% block editButton %}
+        <a class='btn btn-default btn-mini' href='/app_dev.php/admin/product/category/edit/{{ id }}'>
+            <i class='icon-edit'></i>
+            {{ 'edit'|trans }}
+        </a>
+    {% endblock %}
+    {% block deleteButton %}
+        <a class='btn btn-danger btn-mini oni-delete-action' data-toggle="modal" delete-msg="{{ 'modal-messages.delete.confirm.msg'|trans({'%name%': name , '%item%': 'product_bundle.product.category'|trans}) }}"  delete-url="/app_dev.php/admin/product/category/delete/{{ id }}" href='#confirm-delete'>
+            <i class='icon-remove'></i>
+            {{ 'delete'|trans }}
+        </a>
+    {% endblock %}
+</div>

@@ -15,7 +15,6 @@ class GeneralServiceControllerFactory extends CoreAbstractFactory{
 
 	function getService( ContainerInterface $serviceContainer ) {
 
-		$this->setContainer($serviceContainer);
 		$countryService = $this->container->get('oni_country_service');
 		$controller = new GeneralServiceController(
 			$countryService

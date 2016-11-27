@@ -63,9 +63,9 @@ doctrine:
         #naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         # enable metadata caching
-        metadata_cache_driver: redis
+#        metadata_cache_driver: redis
         # enable query caching
-        query_cache_driver: redis
+#        query_cache_driver: redis
         #resolve_target_entities:
         mappings:
             gedmo_tree:
@@ -103,7 +103,46 @@ snc_redis:
             entity_manager: [default]
         query_cache:
             client: doctrine
+
             entity_manager: default
+
+
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        oni_sys:
+            index_name: oni_sys_%kernel.environment%
+            types:
+                productCategory:
+                    mappings:
+                        id: ~
+                        name: ~
+                        url: ~
+                        createdAt: ~
+                        updatedAt: ~
+                        parent:
+                            type: "object"
+                            properties:
+                                id: ~
+                                name: ~
+                                url: ~
+                        children:
+                            type: "nested"
+                            properties:
+                                id: ~
+                                name: ~
+                                url: ~
+                    persistence:
+                        # the driver can be orm, mongodb, phpcr or propel
+                        # listener and finder are not supported by
+                        # propel and should be removed
+                        driver: orm
+                        model: Oni\ProductManagerBundle\Entity\ProductCategory
+                        provider: ~
+                        listener: ~
+                        finder: ~
+
 
 
 
