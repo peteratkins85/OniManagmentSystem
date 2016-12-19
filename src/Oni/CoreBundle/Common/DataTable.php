@@ -1,15 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: peteratkins
- * Date: 26/11/2016
- * Time: 18:51
- */
 
 namespace Oni\CoreBundle\Common;
 
-
-class DataTable
+/**
+ * Class DataTable
+ * @package Oni\CoreBundle\Common
+ * @author peter.atkins85@gmail.com
+ */
+abstract class DataTable implements DataTableInterface
 {
 
     /**
@@ -20,12 +18,12 @@ class DataTable
     /**
      * @var
      */
-    protected $orderColumn;
+    protected $orderBy;
 
     /**
      * @var string
      */
-    protected $dir;
+    protected $order;
 
     /**
      * @var int
@@ -45,7 +43,12 @@ class DataTable
     /**
      * @var array
      */
-    protected $results;
+    protected $results = [
+        'data'            => [],
+        'recordsTotal'    => 0,
+        'recordsFiltered' => 0,
+        'draw'            => 1
+    ];
 
     /**
      * @var int
@@ -60,43 +63,44 @@ class DataTable
     /**
      * @var array
      */
-    protected $response = [
-        'data'            => [],
-        'recordsTotal'    => 0,
-        'recordsFiltered' => 0,
-        'draw'            => 1
-    ];
+    protected $request;
 
-
-    public function __construct($dataTableRequest)
+    /**
+     * DataTable constructor.
+     * @param $request
+     */
+    public function __construct($request)
     {
-        if (!empty($dataTableRequest['search']['value'])) {
-            $this->search = trim($dataTableRequest['search']['value']);
-        }
-
-        if (isset($dataTableRequest['draw'])) {
-            $this->draw = (int) $dataTableRequest['draw'];
-        }
-
-        $this->orderColumn = isset($dataTableRequest['order'][0]['column']) ? (int) $dataTableRequest['order'][0]['column'] : 0;
-        $this->dir = isset($dataTableRequest['order'][0]['dir']) ? $dataTableRequest['order'][0]['dir'] : 'desc';
-        $this->start = isset($dataTableRequest['start']) ? (int) $dataTableRequest['start'] : 0;
-        $this->length = isset($dataTableRequest['length']) ? (int) $dataTableRequest['length'] : 10;
+        $this->init($request);
+        $this->queryData();
     }
 
     /**
-     * @return array
+     * Init from query request
+     *
+     * @param $request
      */
-    public function getResponse()
+    public function init($request)
     {
-        $this->response['data'] = $this->results;
-        $this->response['recordsTotal'] = $this->recordsTotal;
-        $this->response['recordsFiltered'] = $this->recordsFiltered;
-        $this->response['draw'] = $this->draw;
+        if (!empty($request['search']['value'])) {
+           $this->setSearch(trim($request['search']['value']));
+        }
 
-        return $this->response;
+        if (isset($request['draw'])) {
+            $this->setDraw((int) $request['draw']);
+        }
+
+        $this->setRequest($request)
+            ->setOrderBy(isset($request['order'][0]['column']) ? (int)$request['order'][0]['column'] : 0)
+            ->setOrder(isset($request['order'][0]['dir']) ? $request['order'][0]['dir'] : 'desc')
+            ->setStart(isset($request['start']) ? (int)$request['start'] : 0)
+            ->setLength(isset($request['length']) ? (int)$request['length'] : 10);
     }
 
+    /**
+     * Query data source
+     */
+    abstract public function queryData();
 
     /**
      * @return string
@@ -104,22 +108,6 @@ class DataTable
     public function getSearch()
     {
         return $this->search;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOrderColumn()
-    {
-        return $this->orderColumn;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDir()
-    {
-        return $this->dir;
     }
 
     /**
@@ -159,7 +147,12 @@ class DataTable
      */
     public function setResults($results)
     {
-        $this->results = $results;
+        $this->results =  [
+            'data'            => $results,
+            'recordsTotal'    => $this->getRecordsTotal(),
+            'recordsFiltered' => $this->getRecordsFiltered(),
+            'draw'            => $this->getDraw()
+        ];
 
         return $this;
     }
@@ -178,7 +171,7 @@ class DataTable
      */
     public function setRecordsTotal($recordsTotal)
     {
-        $this->recordsTotal = (int) $recordsTotal;
+        $this->recordsTotal = (int)$recordsTotal;
 
         return $this;
     }
@@ -197,9 +190,109 @@ class DataTable
      */
     public function setRecordsFiltered($recordsFiltered)
     {
-        $this->recordsFiltered = (int) $recordsFiltered;
+        $this->recordsFiltered = (int)$recordsFiltered;
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderBy()
+    {
+        return $this->orderBy;
+    }
+
+    /**
+     * @param mixed $orderBy
+     * @return DataTable
+     */
+    public function setOrderBy($orderBy)
+    {
+        $this->orderBy = $orderBy;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param string $order
+     * @return DataTable
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRequest()
+    {
+        return $this->request;
+    }
+
+    /**
+     * @param array $request
+     * @return DataTable
+     */
+    public function setRequest($request)
+    {
+        $this->request = $request;
+
+        return $this;
+    }
+
+    /**
+     * @param string $search
+     * @return DataTable
+     */
+    public function setSearch($search)
+    {
+        $this->search = $search;
+        return $this;
+    }
+
+    /**
+     * @param int $length
+     * @return DataTable
+     */
+    public function setLength($length)
+    {
+        $this->length = $length;
+        return $this;
+    }
+
+    /**
+     * @param int $start
+     * @return DataTable
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+        return $this;
+    }
+
+    /**
+     * @param int $draw
+     * @return DataTable
+     */
+    public function setDraw($draw)
+    {
+        $this->draw = $draw;
+        return $this;
+    }
+
+
+
 
 }

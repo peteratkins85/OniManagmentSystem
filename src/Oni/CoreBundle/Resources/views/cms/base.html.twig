@@ -10,6 +10,7 @@
         {{ include('CoreBundle:cms:head.html.twig') }}
     </head>
     <body class="contrast-dark {% block bodyClass %}{% endblock %}">
+    <input type="hidden" value="{{ app.environment }}" data-oni-environment="oni-environment">
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {{ include('CoreBundle:cms:header.html.twig') }}
     {% endif %}

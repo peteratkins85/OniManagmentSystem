@@ -9,13 +9,8 @@
 namespace Oni\CoreBundle\Doctrine\Spec;
 
 
-trait SpecificationTraits
+trait Traits
 {
-
-    /**
-     * @var string
-     */
-    protected $locale;
 
     public function addFieldAlias($alias)
     {

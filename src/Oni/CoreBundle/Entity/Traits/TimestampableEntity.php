@@ -90,7 +90,7 @@ trait TimestampableEntity
      * @param  int $updatedBy
      * @return $this
      */
-    public function setUpdatedBy(int $updatedBy)
+    public function setUpdatedBy($updatedBy)
     {
         $this->updatedBy = $updatedBy;
 
