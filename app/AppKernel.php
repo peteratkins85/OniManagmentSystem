@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Sg\DatatablesBundle\SgDatatablesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -11,9 +11,11 @@ namespace Oni\CoreBundle\EventListeners;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 
-class OniEventDispatcher extends EventDispatcher{
-	
-	public function __construct() {
+class OniEventDispatcher extends EventDispatcher
+{
+
+	public function __construct()
+    {
 	}
 
 }

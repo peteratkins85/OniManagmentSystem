@@ -66,13 +66,24 @@ abstract class DataTable implements DataTableInterface
     protected $request;
 
     /**
+     * @var array
+     */
+    protected $columns;
+
+    /**
+     * @var array
+     */
+    protected $fields;
+
+
+    /**
      * DataTable constructor.
      * @param $request
      */
     public function __construct($request)
     {
         $this->init($request);
-        $this->queryData();
+        $this->setResults($this->queryData());
     }
 
     /**
@@ -90,11 +101,60 @@ abstract class DataTable implements DataTableInterface
             $this->setDraw((int) $request['draw']);
         }
 
+        if (isset($request['columns'])) {
+            $this->setColumns($request['columns']);
+        }
+
         $this->setRequest($request)
             ->setOrderBy(isset($request['order'][0]['column']) ? (int)$request['order'][0]['column'] : 0)
             ->setOrder(isset($request['order'][0]['dir']) ? $request['order'][0]['dir'] : 'desc')
             ->setStart(isset($request['start']) ? (int)$request['start'] : 0)
             ->setLength(isset($request['length']) ? (int)$request['length'] : 10);
+    }
+
+    /**
+     * @param array $columns
+     */
+    public function setColumns(array $columns){
+
+        $i = 0;
+
+        while(isset($columns[$i])){
+
+            $this->addColumn($columns[$i]);
+
+            if (isset($columns[$i]['data']) && !empty($columns[$i]['data'])){
+                $this->addField($columns[$i]['data']);
+            }
+
+            $i++;
+
+        }
+
+    }
+
+    /**
+     * @param array $column
+     * @return $this
+     */
+    public function addColumn(array $column){
+        $this->columns[] = $column;
+
+        return $this;
+    }
+
+    public function addField(string $field){
+        $this->fields[] = $field;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFields()
+    {
+        return $this->fields;
     }
 
     /**

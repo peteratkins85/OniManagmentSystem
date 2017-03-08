@@ -11,10 +11,9 @@ namespace Oni\CoreBundle\Service;
 use Oni\CoreBundle\Entity\Languages;
 use Oni\CoreBundle\Entity\Repository\LanguagesRepository;
 use Oni\CoreBundle\SessionKeys;
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Intl\Intl;
-use Symfony\Component\HttpKernel\EventListener\TranslatorListener;
+use \Exception;
 
 
 class CoreService
@@ -31,15 +30,10 @@ class CoreService
 
     }
 
-
     /**
-     *
      * Get current locale from session or default locale from table
      *
-     *
-     * @return \Oni\CoreBundle\Entity\Languages $language
-     *
-     *
+     * @return mixed|Languages
      */
     public function getLocale(){
 
@@ -60,9 +54,7 @@ class CoreService
                 $language = $language->getLocale();
                 $session->set(SessionKeys::LOCALE_KEY, $language);
             }else{
-
                 throw new Exception('No default language set');
-
             }
 
         }

@@ -74,6 +74,9 @@ trait DataFilterTrait
             throw new RuntimeException('Filters cannot be applied array property "fields" is either not set or invalid');
         }
 
+        $fields = !empty($params['fields']) ? $params['fields'] : [];
+        $this->setFields($fields);
+
         $this->getRecordCount = isset($params['getRecordCount']) ? $params['getRecordCount'] : false;
         $this->includeFilterOnGetRecordCount = isset($params['includeFilterOnGetRecordCount']) && $params['includeFilterOnGetRecordCount'] ? $params['includeFilterOnGetRecordCount'] : true;
         $this->order = isset($params['order']) ? $params['order'] : 0;
@@ -87,6 +90,35 @@ trait DataFilterTrait
         } else {
             $this->orderBy = array_values($this->fields)[0];
         }
+    }
+
+    /**
+     * @param $fields
+     */
+    protected function setFields($fields)
+    {
+        if ($this->validateFields($fields)) {
+            $this->fields = $fields;
+        }
+
+        return $this;
+    }
+
+    protected function validateFields(array $fields)
+    {
+
+        if (!is_array($fields) || empty($fields)) {
+            return false;
+        }
+
+
+        foreach ($fields as $field) {
+            if (!is_string($field)){
+                return false;
+            }
+        }
+
+        return true;
     }
 
 

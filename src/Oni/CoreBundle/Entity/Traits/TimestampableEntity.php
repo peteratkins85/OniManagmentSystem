@@ -33,12 +33,6 @@ trait TimestampableEntity
     protected $updatedAt;
 
     /**
-     * @var integer
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $updatedBy;
-
-    /**
      * Sets createdAt.
      *
      * @param  \DateTime $createdAt
@@ -82,28 +76,5 @@ trait TimestampableEntity
     public function getUpdatedAt()
     {
         return $this->updatedAt->format('Y-m-d H:i:s');
-    }
-
-    /**
-     * Sets updatedBy.
-     *
-     * @param  int $updatedBy
-     * @return $this
-     */
-    public function setUpdatedBy($updatedBy)
-    {
-        $this->updatedBy = $updatedBy;
-
-        return $this;
-    }
-
-    /**
-     * Returns updatedBy.
-     *
-     * @return int
-     */
-    public function getUpdatedBy()
-    {
-        return $this->updatedBy;
     }
 }

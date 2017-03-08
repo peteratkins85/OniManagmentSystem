@@ -4,6 +4,13 @@ travel_port:
     resource: "@TravelPortBundle/Resources/config/routing.yml"
     prefix:   /
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+sg_datatables_bundle:
+    resource: "@SgDatatablesBundle/Controller/"
+    type:     annotation
+
 #CMS Bundle Routes
 core:
     resource: "@CoreBundle/Resources/config/routing.yml"

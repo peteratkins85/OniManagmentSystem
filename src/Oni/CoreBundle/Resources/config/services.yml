@@ -5,11 +5,9 @@ parameters:
     oni_language_repository: Oni\CoreBundle\Entity\LanguagesRepository
     #Service
     oni_core_service: Oni\CoreBundle\Service\CoreService
-    #Factory
+    #Factorys
     oni_repository_factory: Oni\CoreBundle\Factory\RepositoryFactory
     oni_controller_factory: Oni\CoreBundle\Factory\ControllerFactory
-    #EventListeners
-    oni_locale_listener: Oni\CoreBundle\EventListeners\LocaleListener
 
 services:
     #Entities
@@ -45,28 +43,20 @@ services:
         factory: [ '@oni_country_service_factory', getService ]
         arguments:
             - '@service_container'
+    #FormTypes
+    oni_type_entity_hidden:
+        class: Oni\CoreBundle\Form\Type\EntityHiddenType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
     #Factory
-    oni_repository_factory:
-        class: "%oni_repository_factory%"
-        calls:
-            - [ setContainer, ["@service_container"]]
-    oni_controller_factory:
-        class: "%oni_controller_factory%"
-        calls:
-            - [ setContainer, ["@service_container"]]
     #Event Listeners
     oni_event_dispatcher:
         class: Oni\CoreBundle\EventListeners\OniEventDispatcher
     oni_locale_listener:
-        class: "%oni_locale_listener%"
-        arguments: ["en","@service_container"]
+        class: Oni\CoreBundle\EventListeners\LocaleListener
+        arguments: ["%locale%","@service_container"]
         tags:
            - { name: kernel.event_subscriber }
-#    repository_factory_service:
-#        class: Oni\CoreBundle\Entity\Repository\CoreRepository
-#        factory_service: repository_factory
-#        factory_method: getRepository
-#        arguments:
-#            - ['']
 
 
