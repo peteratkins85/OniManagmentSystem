@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="oni_zone")
  * @ORM\Entity
  */
-class Zones
+class Zone
 {
     /**
      * @var integer
@@ -27,13 +27,6 @@ class Zones
      * @ORM\Column(name="zoneName", type="string", length=100)
      */
     private $zoneName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="zoneType", type="string", length=20)
-     */
-    private $zoneType;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -66,7 +59,7 @@ class Zones
      *
      * @param string $zoneName
      *
-     * @return Zones
+     * @return Zone
      */
     public function setZoneName($zoneName)
     {
@@ -90,7 +83,7 @@ class Zones
      *
      * @param string $zoneType
      *
-     * @return Zones
+     * @return Zone
      */
     public function setZoneType($zoneType)
     {
@@ -114,7 +107,7 @@ class Zones
      *
      * @param \Oni\CoreBundle\Entity\Country $country
      *
-     * @return Zones
+     * @return Zone
      */
     public function addCountry(\Oni\CoreBundle\Entity\Country $country)
     {

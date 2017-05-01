@@ -51,7 +51,7 @@
                     </li>
                 </ul>
             </li>
-            {% if oni_navigation_templates|length > 0  %}
+            {% if oni_navigation_templates is defined and oni_navigation_templates|length > 0  %}
                 {% for template in oni_navigation_templates %}
                     {% include template %}
                 {% endfor %}

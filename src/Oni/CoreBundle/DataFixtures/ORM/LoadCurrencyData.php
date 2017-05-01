@@ -10,13 +10,14 @@ namespace Oni\ProductManagerBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Oni\ProductManagerBundle\Entity\Currency;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Oni\CoreBundle\Entity\Languages;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadLanguageData extends AbstractFixture implements OrderedFixtureInterface ,FixtureInterface, ContainerAwareInterface
+class LoadCurrencyData extends AbstractFixture implements OrderedFixtureInterface ,FixtureInterface, ContainerAwareInterface
 {
 
 
@@ -33,20 +34,17 @@ class LoadLanguageData extends AbstractFixture implements OrderedFixtureInterfac
 
     public function load(ObjectManager $manager)
     {
-        $locale = $this->container->getParameter('stof_doctrine_extensions.default_locale');
-        $language = new Languages();
-        $language->setLanguage('English');
-        $language->setIsDefault(1);
-        $language->setLocale($locale ? $locale : 'en');
-
+        $defaultCurrency = new Currency();
+        $defaultCurrency->setCurrency('British Pound');
+        $defaultCurrency->setCurrencyCode('GBP');
+        $defaultCurrency->setIsDefault(1);
 
         $em = $this->container->get('doctrine.orm.default_entity_manager');
 
-        $em->persist($language);
+        $em->persist($defaultCurrency);
         $em->flush();
 
-        $this->addReference('language', $language);
-
+        $this->addReference('defaultCurrency', $defaultCurrency);
     }
 
     public function getOrder()

@@ -39,10 +39,15 @@ class LoadLanguageData extends AbstractFixture implements OrderedFixtureInterfac
         $language->setIsDefault(1);
         $language->setLocale($locale ? $locale : 'en');
 
+        $french= new Languages();
+        $french->setLanguage('French');
+        $french->setIsDefault(0);
+        $french->setLocale('fr');
 
         $em = $this->container->get('doctrine.orm.default_entity_manager');
 
         $em->persist($language);
+        $em->persist($french);
         $em->flush();
 
         $this->addReference('language', $language);

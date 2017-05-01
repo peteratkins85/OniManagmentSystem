@@ -96,4 +96,6 @@ class CoreController extends Controller implements TranslatorAwareInterface
     {
         $this->translator = $translator;
     }
+
+
 }

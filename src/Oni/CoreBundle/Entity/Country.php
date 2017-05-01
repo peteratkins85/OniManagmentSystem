@@ -95,7 +95,7 @@ class Country
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Oni\CoreBundle\Entity\Zones", inversedBy="countries")
+     * @ORM\ManyToMany(targetEntity="Oni\CoreBundle\Entity\Zone", inversedBy="countries")
      * @ORM\JoinTable(name="oni_zone_country_relations",
      *   joinColumns={
      *     @ORM\JoinColumn(name="zoneId", referencedColumnName="id")
@@ -297,11 +297,11 @@ class Country
     /**
      * Add zone
      *
-     * @param \Oni\CoreBundle\Entity\Zones $zone
+     * @param \Oni\CoreBundle\Entity\Zone $zone
      *
      * @return Country
      */
-    public function addZone(\Oni\CoreBundle\Entity\Zones $zone)
+    public function addZone(\Oni\CoreBundle\Entity\Zone $zone)
     {
         $this->zones[] = $zone;
 
@@ -311,9 +311,9 @@ class Country
     /**
      * Remove zone
      *
-     * @param \Oni\CoreBundle\Entity\Zones $zone
+     * @param \Oni\CoreBundle\Entity\Zone $zone
      */
-    public function removeZone(\Oni\CoreBundle\Entity\Zones $zone)
+    public function removeZone(\Oni\CoreBundle\Entity\Zone $zone)
     {
         $this->zones->removeElement($zone);
     }

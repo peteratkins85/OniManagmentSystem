@@ -88,60 +88,59 @@ snc_redis:
             type: predis
             alias: default
             dsn: redis://localhost
-        doctrine:
-            type: predis
-            alias: doctrine
-            dsn: redis://localhost
+#        doctrine:
+#            type: predis
+#            alias: doctrine
+#            dsn: redis://localhost
     # configure doctrine caching
-    doctrine:
-        metadata_cache:
-            client: doctrine
-            entity_manager: default
-            document_manager: default
-        result_cache:
-            client: doctrine
-            entity_manager: [default]
-        query_cache:
-            client: doctrine
+#    doctrine:
+#        metadata_cache:
+#            client: doctrine
+#            entity_manager: default
+#            document_manager: default
+#        result_cache:
+#            client: doctrine
+#            entity_manager: [default]
+#        query_cache:
+#            client: doctrine
+#            entity_manager: default
 
-            entity_manager: default
 
-
-fos_elastica:
-    clients:
-        default: { host: localhost, port: 9200 }
-    indexes:
-        oni_sys:
-            index_name: oni_sys_%kernel.environment%
-            types:
-                productCategory:
-                    mappings:
-                        id: ~
-                        name: ~
-                        url: ~
-                        createdAt: ~
-                        updatedAt: ~
-                        parent:
-                            type: "object"
-                            properties:
-                                id: ~
-                                name: ~
-                                url: ~
-                        children:
-                            type: "nested"
-                            properties:
-                                id: ~
-                                name: ~
-                                url: ~
-                    persistence:
-                        # the driver can be orm, mongodb, phpcr or propel
-                        # listener and finder are not supported by
-                        # propel and should be removed
-                        driver: orm
-                        model: Oni\ProductManagerBundle\Entity\ProductCategory
-                        provider: ~
-                        listener: ~
-                        finder: ~
+#fos_elastica:
+#    clients:
+#        default: { host: localhost, port: 9200 }
+#    indexes:
+#        oni_sys:
+#            index_name: oni_sys_%kernel.environment%
+#            types:
+#                productCategory:
+#                    mappings:
+#                        id: ~
+#                        name: ~
+#                        url: ~
+#                        createdAt: ~
+#                        updatedAt: ~
+#                        parent:
+#                            type: "object"
+#                            properties:
+#                                id: ~
+#                                name: ~
+#                                url: ~
+#                        children:
+#                            type: "nested"
+#                            properties:
+#                                id: ~
+#                                name: ~
+#                                url: ~
+#                    persistence:
+#                        # the driver can be orm, mongodb, phpcr or propel
+#                        # listener and finder are not supported by
+#                        # propel and should be removed
+#                        driver: orm
+#                        model: Oni\ProductManagerBundle\Entity\ProductCategory
+#                        provider: ~
+#                        listener: ~
+#                        finder: ~
 
 
 
