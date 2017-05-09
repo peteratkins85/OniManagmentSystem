@@ -17,7 +17,7 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "symfony/symfony": "3.0.*",
+        "symfony/symfony": "3.2.*",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
@@ -39,7 +39,12 @@
         "symfony/security-acl": "^3.0",
         "friendsofsymfony/elastica-bundle": "^3.2",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
-        "sg/datatablesbundle": "^0.13.0"
+        "sg/datatablesbundle": "^0.13.0",
+        "oni-sys/core-bundle": "dev-develop",
+        "oni-sys/user-manager-bundle": "dev-develop",
+        "oni-sys/product-manager-bundle": "dev-develop",
+        "oni-sys/content-manager-bundle": "dev-develop",
+        "oni-sys/dashboard-manager-bundle": "dev-develop"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -49,6 +54,26 @@
         {
             "type": "vcs",
             "url": "https://github.com/shinsantiger/guzzle-bundle"
+        },
+        {
+            "type": "vcs",
+            "url": "https://shinraken85@bitbucket.org/shinraken85/corebundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://shinraken85@bitbucket.org/shinraken85/usermanagerbundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://shinraken85@bitbucket.org/shinraken85/productmanagerbundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://shinraken85@bitbucket.org/shinraken85/contentmanagerbundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://shinraken85@bitbucket.org/shinraken85/dashboardmanagerbundle.git"
         }
     ],
     "scripts": {
