@@ -1,0 +1,24 @@
+{
+  "name": "oni-sys",
+  "authors": [
+    "Peter Atkins <peter.atkins85@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "typeahead.js": ">=0.*",
+    "datatables.net": "^1.10.12",
+    "vue": "^2.0.5",
+    "parsleyjs": "^2.6.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "web/js_dependencies",
+    "test",
+    "tests"
+  ]
+}

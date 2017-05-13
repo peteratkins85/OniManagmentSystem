@@ -1,20 +1,21 @@
 security:
+    acl:
+        connection: default
+
     encoders:
         Oni\UserManagerBundle\Entity\User: sha512
-        Oni\TravelConnectBundle\Entity\User: sha512
 
     role_hierarchy:
-        ROLE_B2C:         [ROLE_USER]
-        ROLE_ADMIN:       [ROLE_USER,ROLE_AUTHOR,ROLE_MODERATOR]
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN,ROLE_ALLOWED_TO_SWITCH]
-        ROLE_TRAVEL_CONNECT_ADMIN: [ROLE_TRAVEL_CONNECT_USER, ROLE_TRAVEL_CONNECT_ADMIN]
-        ROLE_TRAVEL_CONNECT_SUPER_ADMIN: [ROLE_TRAVEL_CONNECT_ADMIN,ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ONI_WEB_USER:     [ROLE_ONI_GUEST]
+        ROLE_ONI_USER:         [ROLE_ONI_VIEW, ROLE_ONI_EDIT, ROLE_ONI_WEB_USER, ROLE_ONI_CREATE]
+        ROLE_ONI_ADMIN:        [ROLE_ONI_USER,ROLE_ONI_GUEST, ROLE_ONI_DELETE]
+        ROLE_ONI_SUPER_ADMIN:  [ROLE_ONI_ADMIN,ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         cms_users:
             id: oni_user_provider
-        travel_connect_users:
-            id: oni_travel_connect_user_provider
+#        travel_port_users:
+#            id: oni_travel_port_user_provider
 
 
     firewalls:
@@ -31,33 +32,24 @@ security:
                 path:   /admin/logout
                 target: /admin/login
             anonymous: ~
-        travel_connect:
-            host: '^tc\.%domain%'
-            pattern: ^/
-            provider: travel_connect_users
-            form_login:
-                provider: travel_connect_users
-                login_path: /login
-                check_path: /login_check
-                always_use_default_target_path: true
-                default_target_path: /
-            logout:
-                path:   /logout
-                target: /login
-            anonymous: ~
+#        travel_port:
+#            pattern: ^/travelportal/
+#            provider: travel_port_users
+#            form_login:
+#                provider: travel_port_users
+#                login_path: /travelportal/login
+#                check_path: /travelportal/login_check
+#                always_use_default_target_path: true
+#                default_target_path: /travelportal/hotel-search
+#            logout:
+#                path:   /travelportal/logout
+#                target: /travelportal/login
+#            anonymous: ~
 
     access_control:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/*, role: ROLE_ADMIN }
+        - { path: ^/admin/*, role: ROLE_ONI_ADMIN }
 #        - { path: ^/tc/login,role: IS_AUTHENTICATED_ANONYMOUSLY  }
 #        - { path: ^/tc/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/tc/*,role: ROLE_TRAVEL_CONNECT_USER }
-
-# activate different ways to authenticate
-
-# http_basic: ~
-# http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-# form_login: ~
-# http://symfony.com/doc/current/cookbook/security/form_login_setup.html

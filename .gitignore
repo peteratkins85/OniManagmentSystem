@@ -1,5 +1,6 @@
 /web/bundles/
 /web/lib/*
+/web/js_dependencies/*
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
@@ -8,6 +9,7 @@
 !app/logs/.gitkeep
 /build/
 /vendor/
+/node_modules
 /var/
 /var/cache/*
 /var/logs/*
@@ -16,13 +18,13 @@
 !var/logs/.gitkeep
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
-/bin/
 /src/Oni/*
 !/src/Oni/CoreBundle
 !/src/Oni/.gitkeep
 !/src/.htaccess
 /composer.phar
 .idea/
+Oni
 composer.lock
 generating
 backing

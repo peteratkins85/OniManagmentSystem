@@ -1,26 +1,26 @@
 
 
-travel_connect:
-    resource: "@TravelConnectBundle/Resources/config/routing.yml"
-    prefix:   /
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+sg_datatables_bundle:
+    resource: "@SgDatatablesBundle/Controller/"
+    type:     annotation
 
 #CMS Bundle Routes
 core:
     resource: "@CoreBundle/Resources/config/routing.yml"
     prefix:   /
 
-#product_manager:
-#    resource: "@ProductManagerBundle/Resources/config/routing.yml"
-#    prefix:   /
-
-#dashboard_manager:
-#    resource: "@DashboardManagerBundle/Resources/config/routing.yml"
-#    prefix:   /
-#
-#content_manager:
-#    resource: "@ContentManagerBundle/Resources/config/routing.yml"
-#    prefix:   /
+dashboard_manager:
+    resource: "@DashboardManagerBundle/Resources/config/routing.yml"
+    prefix:   /
 
 user_manager:
     resource: "@UserManagerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+product_manager:
+    resource: "@ProductManagerBundle/Resources/config/routing.yml"
     prefix:   /
