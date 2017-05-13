@@ -57,23 +57,23 @@
         },
         {
             "type": "vcs",
-            "url": "https://shinraken85@bitbucket.org/shinraken85/corebundle.git"
+            "url": "https://github.com/peteratkins85/CoreBundle.git"
         },
         {
             "type": "vcs",
-            "url": "https://shinraken85@bitbucket.org/shinraken85/usermanagerbundle.git"
+            "url": "https://github.com/peteratkins85/UserManagerBundle.git"
         },
         {
             "type": "vcs",
-            "url": "https://shinraken85@bitbucket.org/shinraken85/productmanagerbundle.git"
+            "url": "https://github.com/peteratkins85/ProductManagerBundle.git"
         },
         {
             "type": "vcs",
-            "url": "https://shinraken85@bitbucket.org/shinraken85/contentmanagerbundle.git"
+            "url": "https://github.com/peteratkins85/ContentManagerBundle.git"
         },
         {
             "type": "vcs",
-            "url": "https://shinraken85@bitbucket.org/shinraken85/dashboardmanagerbundle.git"
+            "url": "https://github.com/peteratkins85/DashboardManagerBundle.git"
         }
     ],
     "scripts": {
