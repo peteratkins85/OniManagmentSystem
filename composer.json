@@ -44,7 +44,8 @@
         "oni-sys/user-manager-bundle": "dev-develop",
         "oni-sys/product-manager-bundle": "dev-develop",
         "oni-sys/content-manager-bundle": "dev-develop",
-        "oni-sys/dashboard-manager-bundle": "dev-develop"
+        "oni-sys/dashboard-manager-bundle": "dev-develop",
+        "oomphinc/composer-installers-extender": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -103,6 +104,14 @@
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
+        },
+        "installer-types": ["oni-bundle"],
+        "installer-paths": {
+            "src/Oni/CoreBundle": ["oni-sys/core-bundle"],
+            "src/Oni/UserManagerBundle":["oni-sys/user-manager-bundle"],
+            "src/Oni/ProductManagerBundle":["oni-sys/product-manager-bundle"],
+            "src/Oni/ContentManagerBundle":["oni-sys/content-manager-bundle"],
+            "src/Oni/DashboardManagerBundle":["oni-sys/dashboard-manager-bundle"]
         }
     }
 }
